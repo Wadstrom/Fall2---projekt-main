@@ -57,19 +57,7 @@ namespace Fall_nr_2_Örfu
                         {
                             VisaLista();
                         }
-                        /*
-                         * {sökadeKontakterMeny(lista)}
-                         * visa val meny {'ändra', 'tillbaka'}
-                         * ÖppnarListan(lista)
-                         * switch {ändra, tillbaka}
-                         * 
-                         * ändra:
-                         *     ChangeList(lista)
-                         *     
-                         * tillbaka:
-                         *     throw an error 
-                         *     to go back
-                         */
+                       
 
                         loopContinue = false;
                         break;
