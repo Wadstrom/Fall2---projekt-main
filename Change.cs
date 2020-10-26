@@ -76,7 +76,7 @@ namespace Fall_nr_2_Örfu
                             a = Convert.ToInt32(Console.ReadLine());
                             b = (a - 1);
                             Console.WriteLine($"Skriv in det nya namnet för {KontaktLista.ElementAt(b).Namn}");
-                            string newName = Console.ReadLine();
+                            string newName = Validator.ValidateName(Console.ReadLine());
                             KontaktLista.ElementAt(b).Namn = newName;
                             Console.Clear();
                             Lista_hantera.VisaLista();
@@ -87,7 +87,7 @@ namespace Fall_nr_2_Örfu
                             a = Convert.ToInt32(Console.ReadLine());
                             b = (a - 1);
                             Console.WriteLine($"Skriv in en ny adress till {KontaktLista.ElementAt(b).Namn}");
-                            string newAdress = Console.ReadLine();
+                            string newAdress = Validator.ValidateName(Console.ReadLine());
                             KontaktLista.ElementAt(b).Address = newAdress;
                             Console.Clear();
                             Lista_hantera.VisaLista();
@@ -98,7 +98,7 @@ namespace Fall_nr_2_Örfu
                             a = Convert.ToInt32(Console.ReadLine());
                             b = (a - 1);
                             Console.WriteLine($"Skriv in ett nytt mobilnummer till {KontaktLista.ElementAt(b).Namn}");
-                            string newNumber = Console.ReadLine();
+                            string newNumber = Validator.ValidateNumber(Console.ReadLine());
                             KontaktLista.ElementAt(b).Nummer = newNumber;
                             Console.Clear();
                             Lista_hantera.VisaLista();
