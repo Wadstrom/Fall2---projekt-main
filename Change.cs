@@ -13,7 +13,7 @@ namespace Fall_nr_2_Örfu
             {
                 try
                 {
-                    //sss
+                    
                     Console.WriteLine("I vilken vill du ändra\n1. Privatkontakter.\n2. Jobbkontakter\n3. Tillbaka");
                     valMeny1 = Convert.ToInt32(Console.ReadLine());
                     switch (valMeny1)
