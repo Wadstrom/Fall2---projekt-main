@@ -1,0 +1,49 @@
+.sidebarList > .månadsbudget {
+  background-color: #7d92c5;
+}
+
+table {
+  width: 100%;
+  margin: auto;
+  box-shadow: rgba(0, 0, 0, 0.233) 2px 2px 2px;
+}
+caption {
+  border: solid black;
+  border-radius: 20px 20px 0px 0px;
+  border-width: 1;
+  background-color: #92a7d6;
+
+  font-size: 1.5rem;
+  padding-bottom: 5px;
+}
+th {
+  color: white;
+  text-align: left;
+  background-color: #1d3a6b;
+}
+table,
+th,
+td {
+  border: 1px solid #000;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 7px;
+}
+
+tr:nth-child(even) {
+  background-color: white;
+}
+tr:nth-child(odd) {
+  background-color: #d6deee28;
+}
+
+input {
+  width: 100%;
+  border-radius: 7px;
+  border-style: hidden;
+  font-size: 1rem;
+  font-family: "Times New Roman", Times, serif;
+}

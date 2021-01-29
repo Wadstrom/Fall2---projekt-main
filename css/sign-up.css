@@ -1,0 +1,9 @@
+.sidebarList > .startsida {
+  background-color: #7d92c5;
+}
+.maincontentBox {
+  margin: center;
+}
+.maincontent {
+  grid-column: 1/3;
+}
