@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/site-skeleton.css">
+    <link rel="stylesheet" href="/css/homepage.css">
+    <title>DinBudget</title>
+</head>
+<body>
+<main>
+<div class="header">
+    <h1>Startsida</h1>
+</div>
+<div class="sidebar">
+    <ul class="sidebarList">
+        <li class="startsida">Startsida</li>
+        <li class="inkomster" onclick="location.href='/income.html'">Inkomster</li>
+        <li class="utgifter" onclick="location.href='/expense.html'">Utgifter</li>
+        <li class="månadsbudget" onclick="location.href = '/monthly-budget.html'">Månadsbudget</li>
+        <li class="sparmål">Sparmål</li>
+        <li class="jämför">Jämför med kompis</li>
+        <li class="prenumeration">Prenumeration</li>
+        <li class="loggaUt">Logga ut</li>
+    </ul>
+</div>
+<div class="maincontent">
+    <div class="maincontentBox">
+        <h1>Income</h1>
+        <form id="incomeForm"> 
+            <input placeholder ="Income Name" type = "text">
+            <input placeholder ="Income Amount" type = "number" step="0.01">
+            <input placeholder ="Transaction date" type = "date">
+            <input placeholder ="User Id" type = "text">  
+        <button type="submit">Send</button>
+        </form>
+        </div>
+        </div>
+        <script src="/js/income.js"></script>
+    </main>
+</body>
+</html>
