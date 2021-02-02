@@ -27,39 +27,18 @@
 <div class="maincontent">
     <div class="maincontentBox">
         <h1>Saving Goal</h1>
-        <form id="budgetForm"> 
-            <div>
-                <select name="category" id="category">
-                    <option value="Groceries">Groceries</option>
-                    <option value="Entertainment">Entertainment</option>
-                    <option value="Fixed Cost">Fixed Cost</option>
-                </select>
-            </div>
-            <div>
-                <input placeholder ="Budget Amount" type = "number" step="0.01" required min="0"> 
-            </div>
-            <div>
-                <!-- Denna ska vara ifylld som inloggad by default -->
-                <input placeholder ="User ID" type = "text" required>  
-            </div>
-        <button type="submit" >Send</button> 
-        </form>
         <div>
-           
-            <button type="submit" onclick="getBudgetData()">Show budget</button>
+            <form id="savingForm">
+                <input placeholder="Amount" type="number" step="0.01">
+                <!-- <label for="">Start Date</label> -->
+                <input placeholder="Start Date" type="date">
+                <!-- <label for="">Reach Date</label> -->
+                <input placeholder="Reach Date" type="date">
+                <input placeholder="Goal Name" type="text">
+                <input placeholder="User Id" type="number">
+                <button type="submit">Submit</button>
         </div>
-        <form>
-        </form>
-        
-        <div>
-            <table id="budgetTable">
-         
-            </table>
-        </div>
-       
-        </div>
-        </div>
-        <script src="/js/monthly-budget.js"></script>
+        <script src="/js/saving-goal.js"></script>
         
     </main>
 </body>
