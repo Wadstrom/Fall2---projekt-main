@@ -19,5 +19,30 @@ savingForm.onsubmit= (e) => {
         body: JSON.stringify(requestObject),
 
     })
-
+}
+const getSavingData = () => {
+    fetch('https://localhost:44357/api/savinggoal/')
+        .then((response) => { return response.json() })
+        .then((data) => {
+            let output = ` <tr id="savingTableData">
+            <th>Amount:</th>
+            <th>Start Date:</th>
+            <th>Reach Date:</th>
+            <th>Goal Name:</th>
+            <th>User ID:</th>
+        </tr>`
+            data.forEach(function(savinggoal){
+                // += betyder Append och `` betyder "template-strings där vi kan ha en massor html"
+                  output += `
+                <tr>
+                <td>${savinggoal.Amount}</td>            
+                <td>${new Date(savinggoal.StartDate).toDateString()}</td>
+                <td>${new Date(savinggoal.ReachDate).toDateString()}</td>  
+                <td>${savinggoal.GoalName}</td>
+                <td>${savinggoal.UserID}</td>
+            </tr>
+                `    
+        })
+    document.getElementById('savingTable').innerHTML = output
+    })
 }
