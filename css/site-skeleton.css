@@ -34,6 +34,7 @@ main {
   justify-content: center;
   align-items: flex-start;
 }
+
 .sidebarList > li {
   list-style: none;
   text-align: center;
