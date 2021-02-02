@@ -1,4 +1,4 @@
-savingForm.onsubmit = (e) => {
+savingForm.onsubmit= (e) => {
     e.preventDefault()
     console.log(e)
 
