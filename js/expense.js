@@ -1,4 +1,8 @@
-expenseForm.onsubmit= (e) => {
+
+//onsubmit är en eventhandler som processerar submit events
+// eventobjekt (e) har vi sedan en target på och dess value (texten du matar in)
+
+expenseForm.onsubmit = (e) => {
     e.preventDefault()
     console.log(e)
 
@@ -9,16 +13,19 @@ expenseForm.onsubmit= (e) => {
         ExpenseAmount: e.target[3].value,
         UserId: e.target[4].value
     }
-
+    //post 
         fetch('https://localhost:44357/api/expense', {
             method: 'POST',
             headers: {
+                //The Content-Type is used to indicate the media type of the resource.
+                //In requests, (such as POST or PUT), the client tells the server what type of data is actually sent.
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(requestObject),
         })
     
 }
+//get
 const getExpenseData = () => {
     fetch('https://localhost:44357/api/expense/')
         .then((response) => { return response.json() })
@@ -84,6 +91,6 @@ const getExpenseConsole = () => {
         .then(data => console.log(data))
 }   
 
-function updateTable() {
-    $('#expenseTableDiv').load(document.URL +  ' #expenseTableDiv');
-}
+// function updateTable() {
+//     $('#expenseTableDiv').load(document.URL +  ' #expenseTableDiv');
+// }

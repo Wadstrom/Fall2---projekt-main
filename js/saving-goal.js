@@ -1,3 +1,4 @@
+
 savingForm.onsubmit= (e) => {
     e.preventDefault()
     console.log(e)
@@ -8,7 +9,6 @@ savingForm.onsubmit= (e) => {
         ReachDate: e.target[2].value,
         GoalName: e.target[3].value,
         UserID: e.target[4].value
-
     }
 
     fetch('https://localhost:44357/api/SavingGoal', {
@@ -20,6 +20,7 @@ savingForm.onsubmit= (e) => {
 
     })
 }
+
 const getSavingData = () => {
     fetch('https://localhost:44357/api/savinggoal/')
         .then((response) => { return response.json() })
