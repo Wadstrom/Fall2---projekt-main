@@ -2,5 +2,7 @@
   background-color: #7d92c5;
 }
 .maincontentBox > h1 {
-  text-align: center;
+  padding: 15px;
+  text-align: start;
+  color: #7d92c5;
 }

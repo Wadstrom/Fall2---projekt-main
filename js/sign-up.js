@@ -10,7 +10,7 @@ registerForm.onsubmit= (e) => {
 
     }
 
-    fetch('https://localhost:44357/api/values', {
+    fetch('https://localhost:44357/api/user', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -19,4 +19,4 @@ registerForm.onsubmit= (e) => {
         
     })
     
-}
+} 
