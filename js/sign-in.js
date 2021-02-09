@@ -26,7 +26,8 @@ loginForm.onsubmit= (e) => {
                      window.location.href = 'homepage.html';
                  }
                  else {
-                    alert('Invalid User');
+                    document.getElementById("failedLogIn").innerHTML = "Jalla bror"
+                   
                  }
                 })
                 function setCookie(cname, cvalue) {     

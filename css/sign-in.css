@@ -34,6 +34,7 @@ h3 {
   width: 315px;
   background-color: #1d3a6b;
   height: 3px;
+  margin-top: 10px;
   margin-bottom: 30px;
 }
 
@@ -82,6 +83,13 @@ input {
 .sign-up-btn:hover {
   color: #1d3a6b9c;
   cursor: pointer;
+}
+
+#failedLogIn {
+  color: red;
+  font-weight: bolder;
+  font-size: 1.25rem;
+  height: 15px;
 }
 
 /* @media (max-width: 600px), (max-height: 725px) {
