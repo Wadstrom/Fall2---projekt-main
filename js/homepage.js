@@ -3,13 +3,8 @@ function checkCookie() {
     if (username != "") {
         document.getElementById("welcome").innerHTML = "Welcome UserID:" + username;
      
-    } else {
-      username = prompt("Please enter your name:", "");
-      if (username != "" && username != null) {
-        setCookie("username", username);
-      }
-    }
-  }
+    } 
+}
 
     function getCookie(cname) {
         var name = cname + "=";
@@ -26,3 +21,5 @@ function checkCookie() {
         }
         return "";
       }
+
+

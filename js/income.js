@@ -15,8 +15,7 @@ incomeForm.onsubmit= (e) => {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(requestObject),
-        
+        body: JSON.stringify(requestObject), 
     })
     
 }
