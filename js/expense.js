@@ -2,6 +2,25 @@
 //onsubmit är en eventhandler som processerar submit events
 // eventobjekt (e) har vi sedan en target på och dess value (texten du matar in)
 
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+;
+var cookieUserID = getCookie("User");
+console.log(cookieUserID)
+
 expenseForm.onsubmit = (e) => {
     e.preventDefault()
     console.log(e)
@@ -14,7 +33,8 @@ expenseForm.onsubmit = (e) => {
         UserId: e.target[4].value
     }
     //post 
-        fetch('https://localhost:44357/api/expense', {
+    
+        fetch('https://localhost:44357/api/expense/', {
             method: 'POST',
             headers: {
                 //The Content-Type is used to indicate the media type of the resource.
@@ -27,7 +47,7 @@ expenseForm.onsubmit = (e) => {
 }
 //get
 const getExpenseData = () => {
-    fetch('https://localhost:44357/api/expense/')
+    fetch(`https://localhost:44357/api/expense/${cookieUserID}/`)
         .then((response) => { return response.json() })
         .then((data) => {
             let output = ` <tr id="expenseTableData">
@@ -57,7 +77,7 @@ const getExpenseData = () => {
 
 let inputid = document.getElementById("inputID")
 const getExpenseDataByID = () => {
-    fetch('https://localhost:44357/api/expense/'+inputid.value)
+    fetch('https://localhost:44357/api/expense/'+ inputid.value)
         .then((response) => { return response.json() })
         .then((data) => {
             let output = ` <tr id="expenseTableData">
