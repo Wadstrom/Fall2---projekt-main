@@ -8,7 +8,6 @@ const GetNameByUserIdPromise =  () => {
     
     return data.FirstName
     })
-
 }
 
 function checkCookie() {
@@ -17,14 +16,8 @@ function checkCookie() {
     GetNameByUserIdPromise().then(result => {
       document.getElementById("welcome").innerHTML = "Welcome:" + result;
     })
-     
-    } else {
-      username = prompt("Please enter your name:", "");
-      if (username != "" && username != null) {
-        setCookie("username", username);
-      }
+     } 
     }
-  }
 
     function getCookie(cname) {
         var name = cname + "=";
@@ -41,4 +34,4 @@ function checkCookie() {
         }
         return "";
       }
-     
+
