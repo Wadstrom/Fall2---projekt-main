@@ -30,3 +30,25 @@ tr:nth-child(even) {
 tr:nth-child(odd) {
   background-color: #d6deee28;
 }
+#expenseForm {
+  border-radius: 15px;
+  width: 50%;
+  margin: 0 auto;
+  background-color: #1b3c7775;
+}
+
+#expenseForm div {
+  padding: 15px;
+  text-align: center;
+}
+
+#expenseForm div input,
+#expenseForm button {
+  border-radius: 5px;
+  width: 50%;
+  height: 30px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}

@@ -2,7 +2,6 @@ function checkCookie() {
     var username = getCookie("User");
     if (username != "") {
         document.getElementById("welcome").innerHTML = "Welcome UserID:" + username;
-     
     } 
 }
 
