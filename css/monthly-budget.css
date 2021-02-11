@@ -30,3 +30,31 @@ tr:nth-child(even) {
 tr:nth-child(odd) {
   background-color: #d6deee28;
 }
+
+#budgetForm {
+  border-radius: 15px;
+  height: 320px;
+  width: 50%;
+  margin: 0 auto;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: #1b3c7775;
+}
+
+#budgetForm div {
+  padding: 20px;
+  text-align: center;
+}
+
+#budgetForm div input,
+#budgetForm div select,
+#budgetForm button{
+  border-radius: 5px;
+  width: 80%;
+  height: 30px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+  text-align: center;
+}
