@@ -1,9 +1,23 @@
+var paramForUserName = getCookie("User");
+let fname= "";
+
+const GetNameByUserIdPromise =  () => {
+  return fetch ('https://localhost:44357/api/user/'+ paramForUserName)
+  .then((response) => {return response.json()})
+  .then((data) => {
+    
+    return data.FirstName
+    })
+}
+
 function checkCookie() {
     var username = getCookie("User");
-    if (username != "") {
-        document.getElementById("welcome").innerHTML = "Welcome UserID:" + username;
-    } 
-}
+    if (username != "") { console.log(fname + "hej")
+    GetNameByUserIdPromise().then(result => {
+      document.getElementById("welcome").innerHTML = "Welcome:" + result;
+    })
+     } 
+    }
 
     function getCookie(cname) {
         var name = cname + "=";
@@ -20,5 +34,4 @@ function checkCookie() {
         }
         return "";
       }
-
 

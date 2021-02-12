@@ -34,3 +34,29 @@ tr:nth-child(even) {
 tr:nth-child(odd) {
   background-color: #d6deee28;
 }
+
+#savingForm {
+  border-radius: 15px;
+  height: 370px;
+  width: 50%;
+  margin: 0 auto;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: #1b3c7775;
+}
+
+#savingForm  input,
+#savingForm  label,
+#savingForm button {
+  border-radius: 5px;
+  width: 50%;
+  height: 30px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+

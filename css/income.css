@@ -1,3 +1,31 @@
 .sidebarList > .income {
   background-color: #7d92c5;
 }
+
+#incomeForm {
+  border-radius: 15px;
+  height: 320px;
+  width: 50%;
+  margin: 0 auto;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: #1b3c7775;
+}
+
+#incomeForm div{
+  padding: 8px;
+
+}
+
+#incomeForm input,
+#incomeForm button {
+  border-radius: 5px;
+  width: 50%;
+  height: 30px;
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
