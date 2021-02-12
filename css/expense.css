@@ -34,7 +34,8 @@ tr:nth-child(odd) {
   border-radius: 15px;
   width: 50%;
   margin: 0 auto;
-  background-color: #1b3c7775;
+  background-color: rgba(255, 255, 255, 0.596);
+  /* box-shadow: 0px 0px 10px 10px; */
 }
 
 #expenseForm div {
@@ -51,4 +52,11 @@ tr:nth-child(odd) {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+}
+
+.maincontentBox {
+  background-color: rgba(255, 255, 255, 0);
+  margin: 35px;
+  min-height: calc(100% - 70px);
+  border-radius: 20px;
 }
