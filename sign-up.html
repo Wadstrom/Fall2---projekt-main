@@ -1,55 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/site-skeleton.css">
-    <link rel="stylesheet" href="/css/sign-in.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/site-skeleton.css" />
+    <link rel="stylesheet" href="/css/sign-in.css" />
     <title>DinBudget</title>
-</head>
-<body>
-<main>
-<div class="header">
-    <h1>B.I.M</h1>
-</div>
-<div class="maincontent">
-    <div class="maincontentBox">
-
-        <div>
+  </head>
+  <body>
+    <main>
+      <div class="logoHeader"><h1>B.I.M</h1></div>
+      <div class="textHeader"></div>
+      <div class="maincontent">
+        <div class="maincontentBox">
+          <div>
             <h2>Register</h2>
             <div class="log-in-line"></div>
             <form id="registerForm">
-                <div>
-                    <label for="firstname">Enter firstname</label>
-                    <input id="firstname" name="firstname" type="text">
-                </div>
-                <div>
-                    <label for="lastname">Enter lastname</label>
-                    <input id="lastname" name="lastname" type="text">
-                </div>
-                <div>
-                    <label for="email">Enter email</label>
-                    <input id="email" name="email" type="email">
-                </div>
-                <div>
-                    <label for="password">Enter password</label>
-                    <input id="password" type="password">
-                </div>
-                <div>
-                    <button type="submit" class="sign-in-btn">Register</button>
-                    <div class="log-in-line"></div>
-                </div>
+              <div>
+                <label for="firstname">Enter firstname</label>
+                <input id="firstname" name="firstname" type="text" />
+              </div>
+              <div>
+                <label for="lastname">Enter lastname</label>
+                <input id="lastname" name="lastname" type="text" />
+              </div>
+              <div>
+                <label for="email">Enter email</label>
+                <input id="email" name="email" type="email" />
+              </div>
+              <div>
+                <label for="password">Enter password</label>
+                <input id="password" type="password" />
+              </div>
+              <div>
+                <button type="submit" class="sign-in-btn">Register</button>
+                <div class="log-in-line"></div>
+              </div>
             </form>
 
             <div class="footer">
-                <h3>Already got an account?</h3>
-                <button class="sign-in-btn" onclick="location.href = '/index.html'">Sign in</button>
+              <h3>Already got an account?</h3>
+              <button
+                class="sign-up-btn"
+                onclick="location.href = '/index.html'"
+              >
+                Sign in
+              </button>
+            </div>
+          </div>
         </div>
-        </div>
-
-</div>
-</div>
-</main>
-</body>
-<script src="/js/sign-up.js"></script>
+      </div>
+    </main>
+  </body>
+  <script src="/js/sign-up.js"></script>
 </html>

@@ -1,4 +1,21 @@
-savingForm.onsubmit = (e) => {
+function getCookie(cname) {
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(";");
+  for (var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == " ") {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+var cookieUserID = getCookie("User");
+
+forms.onsubmit = (e) => {
   e.preventDefault();
   console.log(e);
 
@@ -7,7 +24,7 @@ savingForm.onsubmit = (e) => {
     StartDate: e.target[1].value,
     ReachDate: e.target[2].value,
     GoalName: e.target[3].value,
-    UserID: e.target[4].value,
+    UserID: cookieUserID,
   };
 
   fetch("https://localhost:44357/api/SavingGoal", {
@@ -20,22 +37,23 @@ savingForm.onsubmit = (e) => {
 };
 
 const getSavingData = () => {
-  fetch("https://localhost:44357/api/savinggoal/")
+  fetch("https://localhost:44357/api/savinggoal/" + cookieUserID)
     .then((response) => {
       return response.json();
     })
     .then((data) => {
       let output = ` <tr id="savingTableData">
+      <th>Goal Name:</th>   
             <th>Amount:</th>
             <th>Start Date:</th>
             <th>Reach Date:</th>
-            <th>Goal Name:</th>     
+             
             <th>Save each day:</th>
             <th>Save each month:</th>
             <th>User ID:</th>
         </tr>`;
       data.forEach(function (savinggoal) {
-        //för att räkna ut
+        //för att räkna ut dagar/månader -------------------------------------------------------------------------
         var msSpan =
           new Date(savinggoal.ReachDate) - new Date(savinggoal.StartDate);
         var daySpan = msSpan / (1000 * 60 * 60 * 24); //(ms * minut * h * dag)
@@ -51,15 +69,16 @@ const getSavingData = () => {
 
         console.log(saveEveryMonth, "/månad");
         console.log(saveEveryDay, "/dag");
-        //räknar till hit
+        //räknar till hit ------------------------------------------------------------------------------------------
 
         // += betyder Append och `` betyder "template-strings där vi kan ha en massor html"
         output += `
                 <tr>
+                <td>${savinggoal.GoalName}</td>
                 <td>${savinggoal.Amount}</td>            
                 <td>${new Date(savinggoal.StartDate).toDateString()}</td>
                 <td>${new Date(savinggoal.ReachDate).toDateString()}</td>  
-                <td>${savinggoal.GoalName}</td>
+             
                 <td>${saveEveryDay.toFixed(2)}</td>
                 <td>${saveEveryMonth}</td>
                 <td>${savinggoal.UserID}</td>

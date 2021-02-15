@@ -7,14 +7,14 @@
   height: 320px;
   width: 50%;
   margin: 0 auto;
+  margin-top: 10px; /* nu fungerar det pga overflow*/
   padding-top: 15px;
   padding-bottom: 15px;
   background-color: #1b3c7775;
 }
 
-#incomeForm div{
+#incomeForm div {
   padding: 8px;
-
 }
 
 #incomeForm input,

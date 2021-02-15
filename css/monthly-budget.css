@@ -1,60 +1,25 @@
 .sidebarList > .monthly-budget {
   background-color: #7d92c5;
 }
-table {
-  width: 100%;
-  margin: auto;
-  box-shadow: rgba(0, 0, 0, 0.233) 2px 2px 2px;
-}
-th {
-  color: white;
-  text-align: left;
-  background-color: #1d3a6b;
-}
-table,
-th,
-td {
-  border-collapse: collapse;
-  border: 1px solid #000;
-  border-radius: 10px, 30px, 10px, 5px;
-}
 
-th,
-td {
-  padding: 7px;
-}
-
-tr:nth-child(even) {
-  background-color: white;
-}
-tr:nth-child(odd) {
-  background-color: #d6deee28;
-}
-
-#budgetForm {
-  border-radius: 15px;
-  height: 320px;
-  width: 50%;
-  margin: 0 auto;
-  padding-top: 15px;
-  padding-bottom: 15px;
+/* .formContent {
+  padding: 10px;
   background-color: #1b3c7775;
+  width: 350px;
+  height: 150px;
+  margin: auto;
+  display: flex;
+  border-radius: 15px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+#budgetForm {
+  margin: auto;
 }
 
-#budgetForm div {
-  padding: 20px;
-  text-align: center;
-}
+#budgetForm > div {
+  display: flex;
+  justify-content: center;
 
-#budgetForm div input,
-#budgetForm div select,
-#budgetForm button{
-  border-radius: 5px;
-  width: 80%;
-  height: 30px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 10px;
-  text-align: center;
-}
+  padding-bottom: 10px;
+} */

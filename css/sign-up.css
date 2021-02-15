@@ -1,3 +1,9 @@
+.logoHeader {
+  grid-column: 1/3;
+}
+.textHeader {
+  background-color: transparent;
+}
 .sidebarList > .startsida {
   background-color: #7d92c5;
 }
