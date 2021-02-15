@@ -35,9 +35,6 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-  /* margin-bottom: 5px;  räcker att ha i budgetgorm > div*/
-
-  /* text-align: center;  */
 }
 
 #forms > div > button {

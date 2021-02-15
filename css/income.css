@@ -7,7 +7,7 @@
   height: 320px;
   width: 50%;
   margin: 0 auto;
-  margin-top: 10px; /* nu fungerar det pga overflow*/
+  margin-top: 10px;
   padding-top: 15px;
   padding-bottom: 15px;
   background-color: #1b3c7775;
