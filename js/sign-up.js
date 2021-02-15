@@ -1,6 +1,5 @@
 registerForm.onsubmit = (e) => {
   e.preventDefault();
-  console.log(e);
 
   let requestObject = {
     FirstName: e.target[0].value,
@@ -15,5 +14,16 @@ registerForm.onsubmit = (e) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(requestObject),
-  });
+  })
+  .then((Response) => { return Response.json()})
+  .then((data) => {
+
+    if(data.Status == "Invalid")
+      alert(data.Message);
+    else
+    {
+      window.location.href = "index.html";
+    }
+
+  })
 };
