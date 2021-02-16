@@ -35,10 +35,13 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
+<<<<<<< HEAD
   border: 1px solid black;
   /* margin-bottom: 5px;  räcker att ha i budgetgorm > div*/
 
   /* text-align: center;  */
+=======
+>>>>>>> 1944d298cec7edce8db01f16b0790f6ea41c0dbf
 }
 
 #forms > div > button {

@@ -100,11 +100,5 @@ input {
   font-weight: bolder;
   font-size: 1.25rem;
   height: 15px;
+  margin-bottom: 10px;
 }
-
-/* @media (max-width: 600px), (max-height: 725px) {
-  .maincontent {
-    grid-template-columns: 1fr 400px 1fr;
-    grid-template-rows: 1fr 500px 1fr;
-  }
-} */
