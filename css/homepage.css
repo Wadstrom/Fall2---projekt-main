@@ -6,3 +6,19 @@
   text-align: start;
   color: #7d92c5;
 }
+.maincontentBox{
+  
+}
+#welcome{
+  padding: 5px;
+  display: inline-block;
+}
+#budget{
+  color:rgb(28, 97, 51)
+}
+#expense{
+  color:rgb(194, 37, 71)
+}
+#remaining{
+  color:rgb(32, 32, 207)
+}

@@ -1,3 +1,5 @@
+import {totalRemainingEntertainment, totalRemainingGroceries, totalRemainingFixedCosts} from "./calculate.js";
+
 function getCookie(cname) {
   var name = cname + "=";
   var decodedCookie = decodeURIComponent(document.cookie);
@@ -42,6 +44,7 @@ const getBudgetData = () => {
       let output = ` <tr id="budgetTableData">
             <th>Category:</th>
             <th>Amount (kr):</th>
+            <th>Remaining Amount(kr):</th>
             <th>Budget ID:</th>
             <th>User ID:</th>
         </tr>`;
@@ -51,6 +54,7 @@ const getBudgetData = () => {
                 <tr>
                 <td>${budget.Category}</td>            
                 <td>${budget.Amount}</td>
+                <td>${tot}</td>
                 <td>${budget.BudgetId}</td>  
                 <td>${budget.UserID}</td>
             </tr>
