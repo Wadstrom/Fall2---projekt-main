@@ -1,3 +1,12 @@
+
+const FunnyArray = [
+    'HA-HA Wrong!',
+    'Pass wrong.. or maybe.. maybe mail..',
+    'Come on! Wrong Mail or Pass',
+    'You shall not pass!!'
+]
+
+
 let UserID 
 
 loginForm.onsubmit= (e) => {
@@ -26,7 +35,7 @@ loginForm.onsubmit= (e) => {
                      window.location.href = 'homepage.html';
                  }
                  else {
-                    document.getElementById("failedLogIn").innerHTML = "Jalla bror"
+                     document.getElementById("failedLogIn").innerHTML = FunnyArray[Math.floor(Math.random() * FunnyArray.length)]
                    
                  }
                 })

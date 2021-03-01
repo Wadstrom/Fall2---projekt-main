@@ -1,0 +1,56 @@
+.formContent > .newBudgetLabel {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+}
+.newBudgetLabel > h2 {
+  color: white;
+  text-shadow: 1px 1px 5px black;
+}
+
+#forms {
+  border-radius: 15px;
+  height: 100%;
+  width: 50%;
+  min-width: 200px;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: #1b3c7775;
+}
+
+#forms > div {
+  padding-bottom: 13px;
+  text-align-last: center;
+}
+
+#forms > div > input,
+#forms > div > select {
+  border-radius: 5px;
+  width: 80%;
+  height: 30px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid black;
+}
+
+#forms > div > button {
+  padding: 0 35px;
+  height: 30px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+button:hover {
+  background-color: lightgray;
+  cursor: pointer;
+}
+
+label {
+  color: white;
+  font-weight: bolder;
+  text-shadow: 1px 1px black;
+}
