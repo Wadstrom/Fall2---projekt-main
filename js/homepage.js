@@ -14,7 +14,6 @@ const GetNameByUserIdPromise = () => {
 function checkCookie() {
   var username = getCookie("User");
   if (username != "") {
-    console.log(fname + "hej");
     GetNameByUserIdPromise().then((result) => {
       document.getElementById("welcome").innerHTML = "Welcome: " + result;
     });
