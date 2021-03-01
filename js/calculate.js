@@ -60,9 +60,9 @@ function printExpenses() {
   });
 }
 //-------------------Calculate function--------------------------------------------(p.All < lista promise. Kolla. )
-let totalRemainingGroceries = 0;
-let totalRemainingFixedCosts = 0;
-let totalRemainingEntertainment = 0;
+export let totalRemainingGroceries = 0;
+export let totalRemainingFixedCosts = 0;
+export let totalRemainingEntertainment = 0;
 let totalExpenseGroceries = 0, totalExpenseFixedCosts = 0, totalExpenseEntertainment = 0;
 let totalBudgetGroceries = 0, totalBudgetFixedCosts = 0, totalBudgetEntertainment = 0;
 
@@ -95,5 +95,3 @@ const calculateExpenses = () => {
   }
 }
 printBudgets()
-//printExpenses()
-//printAll()
