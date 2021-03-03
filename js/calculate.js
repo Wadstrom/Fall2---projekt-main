@@ -15,13 +15,15 @@ const GetBudgetsByUserIdPromise = () => {
       return response.json();
     })
     .then((data) => {
-      console.log(data)
+      console.log(data[0].Date)
       for (let i = 0; i < data.length; i++) {
-        budgets[i] = { Category: data[i].Category, Amount: data[i].Amount }
+        budgets[i] = { Category: data[i].Category, Amount: data[i].Amount, Date: data[i].Date}
       }
-      groceriesBudget = budgets.filter(category => category.Category === 'Groceries');
-      fixedcostsBudget = budgets.filter(category => category.Category === "Fixed Cost")
-      entertainmentBudget = budgets.filter(category => category.Category === "Entertainment")
+      let sortDate = budgets.filter(date => new Date(date.Date).getMonth() === getDateNow());
+      groceriesBudget = sortDate.filter(category => category.Category === 'Groceries');
+      fixedcostsBudget = sortDate.filter(category => category.Category === "Fixed Cost")
+      entertainmentBudget = sortDate.filter(category => category.Category === "Entertainment")
+      return budgets
     })
 };
 //-----------------------------Getting expenses_ANd sorting-----------------------
@@ -35,7 +37,6 @@ const GetExpensesByUserIdPromise = () => {
       return response.json();
     })
     .then((data) => {
-      console.log(data)
       for (let i = 0; i < data.length; i++) {
         expenses[i] = { Category: data[i].Category, ExpenseAmount: data[i].ExpenseAmount }
       }
@@ -94,4 +95,18 @@ const calculateExpenses = () => {
     totalExpenseEntertainment += fixedcostsExpense[i].ExpenseAmount
   }
 }
+
+
+// du skapa en div med id "remaining" för att skriva ut vad som man har kvar. Den ska flyttas i css. SOVA!!!
+// kolla över Calculate(). så den kallas på rätt ställe och EFTER datan har hämtats i GetexpensesByUserIdPromise och Get BudgetsByUserIdPromise
+
+function getDateNow(){
+  const today = new Date();
+  let month = today.getMonth();
+  
+  return month;
+}
+getDateNow()
+
+
 printBudgets()
