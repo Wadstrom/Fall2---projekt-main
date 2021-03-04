@@ -1,5 +1,5 @@
 import cookieUserID from "./cookiecutter.js";
-console.log(cookieUserID)
+
 //calculate remaining budget
 // get-budget.catagory and amount. Get all expenses for that catagory.
 //then ammount minus the TOTAL of expenses
@@ -15,15 +15,15 @@ const GetBudgetsByUserIdPromise = () => {
       return response.json();
     })
     .then((data) => {
-      console.log(data[0].Date)
       for (let i = 0; i < data.length; i++) {
         budgets[i] = { Category: data[i].Category, Amount: data[i].Amount, Date: data[i].Date}
       }
-      let sortDate = budgets.filter(date => new Date(date.Date).getMonth() === getDateNow());
-      groceriesBudget = sortDate.filter(category => category.Category === 'Groceries');
-      fixedcostsBudget = sortDate.filter(category => category.Category === "Fixed Cost")
-      entertainmentBudget = sortDate.filter(category => category.Category === "Entertainment")
-      return budgets
+      let sortDateE = budgets.filter(date => new Date(date.Date).getMonth() === getDateNow());
+      let sortYear= sortDateE.filter(year => new Date(year.Date).getFullYear() === getYearNow())
+      groceriesBudget = sortYear.filter(category => category.Category === 'Groceries');
+      fixedcostsBudget = sortYear.filter(category => category.Category === "Fixed Cost")
+      entertainmentBudget = sortYear.filter(category => category.Category === "Entertainment")
+      
     })
 };
 //-----------------------------Getting expenses_ANd sorting-----------------------
@@ -38,17 +38,19 @@ const GetExpensesByUserIdPromise = () => {
     })
     .then((data) => {
       for (let i = 0; i < data.length; i++) {
-        expenses[i] = { Category: data[i].Category, ExpenseAmount: data[i].ExpenseAmount }
+        expenses[i] = { Category: data[i].Category, ExpenseAmount: data[i].ExpenseAmount, TransactionDate: data[i].TransactionDate }
       }
-      groceriesExpense = expenses.filter(category => category.Category === 'Groceries');
-      fixedcostsExpense = expenses.filter(category => category.Category === "Fixed Cost")
-      entertainmentExpense = expenses.filter(category => category.Category === "Entertainment")
+      let sortDateE = expenses.filter(date => new Date(date.TransactionDate).getMonth() === getDateNow());
+      let sortYear= sortDateE.filter(year => new Date(year.TransactionDate).getFullYear() === getYearNow())
+      groceriesExpense = sortYear.filter(category => category.Category === 'Groceries');
+      fixedcostsExpense = sortYear.filter(category => category.Category === "Fixed Cost")
+      entertainmentExpense = sortYear.filter(category => category.Category === "Entertainment") 
     })
 };
 //----------------------------------print functions-----------------------------
 function printBudgets() {
   GetBudgetsByUserIdPromise().then(() => {
-    calculateBudgets();
+    calculateBudgets(); 
     document.getElementById("budget").innerHTML += "<br>" + "Groceries: " + totalBudgetGroceries + "<br>" + "Fixed Costs: " + totalBudgetFixedCosts + "<br>" + "Entertainment: " + totalBudgetEntertainment;
     printExpenses()
   });
@@ -61,9 +63,9 @@ function printExpenses() {
   });
 }
 //-------------------Calculate function--------------------------------------------(p.All < lista promise. Kolla. )
-export let totalRemainingGroceries = 0;
-export let totalRemainingFixedCosts = 0;
-export let totalRemainingEntertainment = 0;
+let totalRemainingGroceries = 0;
+ let totalRemainingFixedCosts = 0;
+ let totalRemainingEntertainment = 0;
 let totalExpenseGroceries = 0, totalExpenseFixedCosts = 0, totalExpenseEntertainment = 0;
 let totalBudgetGroceries = 0, totalBudgetFixedCosts = 0, totalBudgetEntertainment = 0;
 
@@ -92,21 +94,24 @@ const calculateExpenses = () => {
   }
   for (let i = 0; i < entertainmentExpense.length; i++) {
     totalRemainingEntertainment -= entertainmentExpense[i].ExpenseAmount
-    totalExpenseEntertainment += fixedcostsExpense[i].ExpenseAmount
+    totalExpenseEntertainment += entertainmentExpense[i].ExpenseAmount
   }
 }
 
 
-// du skapa en div med id "remaining" för att skriva ut vad som man har kvar. Den ska flyttas i css. SOVA!!!
+// du ska skapa en div med id "remaining" för att skriva ut vad som man har kvar. Den ska flyttas i css. SOVA!!!
 // kolla över Calculate(). så den kallas på rätt ställe och EFTER datan har hämtats i GetexpensesByUserIdPromise och Get BudgetsByUserIdPromise
 
 function getDateNow(){
   const today = new Date();
   let month = today.getMonth();
-  
   return month;
 }
-getDateNow()
-
+function getYearNow(){
+  const today= new Date();
+  let year = today.getFullYear();
+  console.log(year);
+  return year;
+}
 
 printBudgets()
