@@ -1,3 +1,5 @@
+import {totalRemainingEntertainment, totalRemainingGroceries, totalRemainingFixedCosts} from "./calculate.js";
+
 function getCookie(cname) {
   var name = cname + "=";
   var decodedCookie = decodeURIComponent(document.cookie);
@@ -23,6 +25,7 @@ forms.onsubmit = (e) => {
     Category: e.target[0].value,
     Amount: e.target[1].value,
     UserID: cookieUserID,
+    Date: e.target[2].value
   };
 
   fetch("https://localhost:44357/api/budget", {
@@ -39,11 +42,14 @@ const getBudgetData = () => {
       return response.json();
     })
     .then((data) => {
+
       let output = ` <tr id="budgetTableData">
             <th>Category:</th>
             <th>Amount (kr):</th>
+            <th>Remaining Amount(kr):</th>
             <th>Budget ID:</th>
             <th>User ID:</th>
+            
         </tr>`;
       data.forEach(function (budget) {
         // += betyder Append och `` betyder "template-strings där vi kan ha en massor html"
@@ -51,6 +57,7 @@ const getBudgetData = () => {
                 <tr>
                 <td>${budget.Category}</td>            
                 <td>${budget.Amount}</td>
+                <td>${tot}</td>
                 <td>${budget.BudgetId}</td>  
                 <td>${budget.UserID}</td>
             </tr>
@@ -60,4 +67,9 @@ const getBudgetData = () => {
     });
 };
 
+
+
+var months = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
+
+console.log(getDateNow());
 //hide show add budget btn
