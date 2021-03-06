@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,59 +10,60 @@
     <link rel="stylesheet" href="/css/table.css">
     <title>DinBudget</title>
 </head>
-<body>
-<main>
-    <div class="logoHeader">B.I.M</div>
-    <div class="textHeader">
-      <h1>Saving goal</h1>
-    </div>
-<div class="sidebar">
-    <ul class="sidebarList">
-        <li class="homepage" onclick="location.href='/homepage.html'">Homepage</li>
-        <li class="income" onclick="location.href='/income.html'">Income</li>
-        <li class="expenses" onclick="location.href='/expense.html'">Expense</li>
-        <li class="monthly-budget" onclick="location.href = '/monthly-budget.html'">Monthly Budget</li>
-        <li class="saving-goal">Saving Goal</li>
-        <li class="compare">Compare with friend</li>
-        <li class="subscribe">Subscription</li>
-        <li class="sign-out" onclick="location.href= '/index.html'">
-            Sign out
-          </li>
-    </ul>
-</div>
-<div class="maincontent">
-    <div class="maincontentBox">
-        <div>
-            <form id="forms">
-                <div class="newBudgetLabel">
-                    <h2>New saving goal</h2>
-                  </div>
-                <div>
-                    <input placeholder="Amount" type="number" step="0.01" required>
-                </div>
-                <div>
-                    <label for="">Start Date</label>
-                    <input placeholder="Start Date" type="date" required>
-                </div>
-                <div>
-                    <label for="">Reach Date</label>
-                    <input placeholder="Reach Date" type="date" required>
-                </div>
-                <div>
-                    <input placeholder="Goal Name" type="text" required>
-                </div>
-                <div>
-                    <button type="submit">Submit</button>
-                </div>
-                </form>
-        </div>
-       
-        <div>
-            <table id="savingTable">
 
-            </table>
+<body>
+    <main>
+        <div class="logoHeader">B.I.M</div>
+        <div class="textHeader">
+            <h1>Saving goal</h1>
         </div>
-        <script onload="getSavingData()" src="/js/saving-goal.js"></script>
+        <div class="sidebar">
+            <ul class="sidebarList">
+                <li class="homepage" onclick="location.href='/homepage.html'">Homepage</li>
+                <li class="income" onclick="location.href='/income.html'">Income</li>
+                <li class="expenses" onclick="location.href='/expense.html'">Expense</li>
+                <li class="monthly-budget" onclick="location.href = '/monthly-budget.html'">Monthly Budget</li>
+                <li class="saving-goal">Saving Goal</li>
+                <li class="compare">Compare with friend</li>
+                <li class="subscribe">Subscription</li>
+                <li class="sign-out" onclick="location.href= '/index.html'">
+                    Sign out
+                </li>
+            </ul>
+        </div>
+        <div class="maincontent">
+            <div class="maincontentBox">
+                <div>
+                    <form id="forms">
+                        <div class="newBudgetLabel">
+                            <h2>New saving goal</h2>
+                        </div>
+                        <div>
+                            <input placeholder="Amount" type="number" step="0.01" required>
+                        </div>
+                        <div>
+                            <label for="">Start Date</label>
+                            <input placeholder="Start Date" type="date" required>
+                        </div>
+                        <div>
+                            <label for="">Reach Date</label>
+                            <input placeholder="Reach Date" type="date" required>
+                        </div>
+                        <div>
+                            <input placeholder="Goal Name" type="text" required>
+                        </div>
+                        <div>
+                            <button type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div>
+                    <table id="savingTable">
+
+                    </table>
+                </div>
+                <script onload="getSavingData()" src="/js/saving-goal.js"></script>
     </main>
 </body>
 

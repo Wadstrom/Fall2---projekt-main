@@ -1,87 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="css/site-skeleton.css" />
-    <link rel="stylesheet" href="/css/expense.css" />
-    <link rel="stylesheet" href="/css/table.css" />
-    <link rel="stylesheet" href="/css/forms.css" />
-    <title>DinBudget</title>
-  </head>
-  <body>
-    <main>
-      <div class="logoHeader">B.I.M</div>
-      <div class="textHeader">
-        <h1>Expenses</h1>
-      </div>
-      <div class="sidebar">
-        <ul class="sidebarList">
-          <li class="homepage" onclick="location.href='/homepage.html'">
-            Homepage
-          </li>
-          <li class="income" onclick="location.href='/income.html'">Income</li>
-          <li class="expenses" onclick="location.href='/expense.html'">
-            Expense
-          </li>
-          <li
-            class="monthly-budget"
-            onclick="location.href = '/monthly-budget.html'"
-          >
-            Monthly Budget
-          </li>
-          <li class="saving-goal" onclick="location.href = '/saving-goal.html'">
-            Saving Goal
-          </li>
-          <li class="compare">Compare with friend</li>
-          <li class="subscribe">Subscription</li>
-          <li class="sign-out" onclick="location.href= '/index.html'">
-            Sign out
-          </li>
-        </ul>
-      </div>
-      <div class="maincontent">
-        <div class="maincontentBox">
-          <form id="forms">
-            <div class="newBudgetLabel">
-              <h2>New expense</h2>
-            </div>
-            <div>
-              <input placeholder="Expense Name" type="text" required />
-            </div>
-            <div>
-              <select name="category" id="category">
-                <option value="Groceries">Groceries</option>
-                <option value="Entertainment">Entertainment</option>
-                <option value="Fixed Cost">Fixed Cost</option>
-              </select>
-            </div>
-            <div>
-              <label for="date">Date</label>
-              <input placeholder="Transaction date" type="date" required />
-            </div>
-            <div>
-              <input
-                placeholder="Expense Amount"
-                type="number"
-                step="0.01"
-                required
-                min="0"
-              />
-            </div>
 
-            <div>
-              <button type="submit">Send</button>
-            </div>
-          </form>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="css/site-skeleton.css" />
+  <link rel="stylesheet" href="/css/expense.css" />
+  <link rel="stylesheet" href="/css/table.css" />
+  <link rel="stylesheet" href="/css/forms.css" />
+  <title>DinBudget</title>
+</head>
 
-          <div id="expenseDiv"></div>
-          <div>
-            <table id="expenseTable"></table>
+<body>
+  <main>
+    <div class="logoHeader">B.I.M</div>
+    <div class="textHeader">
+      <h1>Expenses</h1>
+    </div>
+    <div class="sidebar">
+      <ul class="sidebarList">
+        <li class="homepage" onclick="location.href='/homepage.html'">
+          Homepage
+        </li>
+        <li class="income" onclick="location.href='/income.html'">Income</li>
+        <li class="expenses" onclick="location.href='/expense.html'">
+          Expense
+        </li>
+        <li class="monthly-budget" onclick="location.href = '/monthly-budget.html'">
+          Monthly Budget
+        </li>
+        <li class="saving-goal" onclick="location.href = '/saving-goal.html'">
+          Saving Goal
+        </li>
+        <li class="compare">Compare with friend</li>
+        <li class="subscribe">Subscription</li>
+        <li class="sign-out" onclick="location.href= '/index.html'">
+          Sign out
+        </li>
+      </ul>
+    </div>
+    <div class="maincontent">
+      <div class="maincontentBox">
+        <form id="forms">
+          <div class="newBudgetLabel">
+            <h2>New expense</h2>
           </div>
+          <div>
+            <input placeholder="Expense Name" type="text" required />
+          </div>
+          <div>
+            <select name="category" id="category">
+              <option value="Groceries">Groceries</option>
+              <option value="Entertainment">Entertainment</option>
+              <option value="Fixed Cost">Fixed Cost</option>
+            </select>
+          </div>
+          <div>
+            <label for="date">Date</label>
+            <input placeholder="Transaction date" type="date" required />
+          </div>
+          <div>
+            <input placeholder="Expense Amount" type="number" step="0.01" required min="0" />
+          </div>
+
+          <div>
+            <button type="submit">Send</button>
+          </div>
+        </form>
+
+        <div id="expenseDiv"></div>
+        <div>
+          <table id="expenseTable"></table>
         </div>
       </div>
-      <script onload="getExpenseData()" src="/js/expense.js"></script>
-    </main>
-  </body>
+    </div>
+    <script onload="getExpenseData()" src="/js/expense.js"></script>
+  </main>
+</body>
+
 </html>
