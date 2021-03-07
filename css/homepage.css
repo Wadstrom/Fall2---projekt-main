@@ -31,3 +31,7 @@
 #remaining{
   color:rgb(32, 32, 207)
 }
+footer{
+  display:flex;
+  justify-content: space-between;
+}

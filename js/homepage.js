@@ -17,11 +17,16 @@ function checkCookie() {
   if (username != "") {
     GetNameByUserIdPromise().then((result) => {
       document.getElementById("welcome").innerHTML = "Welcome: " + result;
-    })}else{
-      document.getElementById("welcome").innerHTML =  notLoggedIn;
-    }
+    })
+  } else {
+    document.getElementById("welcome").innerHTML = notLoggedIn;
+  }
 
 }
+/*const footer = document.querySelectorAll("footer");
+const foot = (e) => {
+  let target = e.target
 
-checkCookie()
+}*/
+checkCookie();
 
