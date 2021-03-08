@@ -13,3 +13,7 @@
 .maincontent {
   grid-column: 1/3;
 }
+footer{
+  display:flex;
+  justify-content: space-between;
+}
