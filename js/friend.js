@@ -6,6 +6,7 @@ forms.onsubmit = (e) => {
 
   let requestObject = {
     From_ID: cookieUserID,
+    //From_Email: 
     To_Email: e.target[0].value,
     Status: "Pending",
   };
@@ -25,8 +26,25 @@ const getPendingFriend = () => {
       return response.json();
     })
     .then((data) => {
-      console.log(data);
-    });
+      let output = ` <tr id="expenseTableData">
+      <th>Name:</th>
+      <th>Email:</th>
+      <th>From user ID:</th>
+      <th>Status:</th>
+  </tr>`;
+data.forEach(function (friend) {
+  // += betyder Append och `` betyder "template-strings där vi kan ha en massor html"
+  output += `
+          <tr>
+          <td>Name</td>            
+          <td>Email</td>
+          <td>${friend.From_ID}</td>  
+          <td>${friend.Status}</td>
+      </tr>
+          `;
+});
+document.getElementById("expenseTable").innerHTML = output;
+});
 };
 
 getPendingFriend();
