@@ -1,8 +1,9 @@
-var paramForUserName = getCookie("User");
-let fname = "";
+import cookieUserID from "./cookiecutter.js"
+
+const notLoggedIn = "You are not logged in. Please login for full use of this site.";
 
 const GetNameByUserIdPromise = () => {
-  return fetch("https://localhost:44357/api/user/" + paramForUserName)
+  return fetch("https://localhost:44357/api/user/" + cookieUserID)
     .then((response) => {
       return response.json();
     })
@@ -12,26 +13,20 @@ const GetNameByUserIdPromise = () => {
 };
 
 function checkCookie() {
-  var username = getCookie("User");
+  var username = cookieUserID;
   if (username != "") {
     GetNameByUserIdPromise().then((result) => {
       document.getElementById("welcome").innerHTML = "Welcome: " + result;
-    });
+    })
+  } else {
+    document.getElementById("welcome").innerHTML = notLoggedIn;
   }
-}
 
-function getCookie(cname) {
-  var name = cname + "=";
-  var decodedCookie = decodeURIComponent(document.cookie);
-  var ca = decodedCookie.split(";");
-  for (var i = 0; i < ca.length; i++) {
-    var c = ca[i];
-    while (c.charAt(0) == " ") {
-      c = c.substring(1);
-    }
-    if (c.indexOf(name) == 0) {
-      return c.substring(name.length, c.length);
-    }
-  }
-  return "";
 }
+/*const footer = document.querySelectorAll("footer");
+const foot = (e) => {
+  let target = e.target
+
+}*/
+checkCookie();
+
