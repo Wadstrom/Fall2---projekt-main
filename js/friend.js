@@ -26,32 +26,14 @@ const getPendingFriend = () => {
       return response.json();
     })
     .then((data) => {
-<<<<<<< HEAD
-      let output = ` <tr id="expenseTableData">
-=======
-      let output =  `<tr id="expenseTableData">
->>>>>>> 38f66583337368ae0417c8ca0c3959b5dde6c33a
+      let output =  `<tr id="FriendTableData">
       <th>Name:</th>
       <th>Email:</th>
       <th>From user ID:</th>
       <th>Status:</th>
   </tr>`;
 data.forEach(function (friend) {
-<<<<<<< HEAD
-  // += betyder Append och `` betyder "template-strings där vi kan ha en massor html"
-  output += `
-          <tr>
-          <td>Name</td>            
-          <td>Email</td>
-          <td>${friend.From_ID}</td>  
-          <td>${friend.Status}</td>
-      </tr>
-          `;
-});
-document.getElementById("expenseTable").innerHTML = output;
-=======
-  // += betyder Append och ` betyder "template-strings där vi kan ha en massor html"
-  output += `
+   output += `
           <tr>
           <td>Name</td>
           <td>Email</td>
@@ -61,7 +43,6 @@ document.getElementById("expenseTable").innerHTML = output;
           ;
 });
 document.getElementById("friendtable").innerHTML = output;
->>>>>>> 38f66583337368ae0417c8ca0c3959b5dde6c33a
 });
 };
 getPendingFriend();
