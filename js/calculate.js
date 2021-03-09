@@ -110,7 +110,6 @@ function getDateNow(){
 function getYearNow(){
   const today= new Date();
   let year = today.getFullYear();
-  console.log(year);
   return year;
 }
 
