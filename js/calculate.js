@@ -97,11 +97,7 @@ const calculateExpenses = () => {
     totalExpenseEntertainment += entertainmentExpense[i].ExpenseAmount
   }
 }
-
-
-// du ska skapa en div med id "remaining" för att skriva ut vad som man har kvar. Den ska flyttas i css. SOVA!!!
-// kolla över Calculate(). så den kallas på rätt ställe och EFTER datan har hämtats i GetexpensesByUserIdPromise och Get BudgetsByUserIdPromise
-
+//-----------------------------------------------Filter Sort Date Functions-------------------------------------------------
 function getDateNow(){
   const today = new Date();
   let month = today.getMonth();
