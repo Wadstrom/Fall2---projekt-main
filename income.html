@@ -7,6 +7,7 @@
   <link rel="stylesheet" type="text/css" href="css/site-skeleton.css" />
   <link rel="stylesheet" href="/css/income.css" />
   <link rel="stylesheet" href="/css/forms.css" />
+  <link rel="stylesheet" href="/css/table.css" />
   <title>DinBudget</title>
 </head>
 
@@ -18,9 +19,7 @@
     </div>
     <div class="sidebar">
       <ul class="sidebarList">
-        <li class="homepage" onclick="location.href='/homepage.html'">
-          Homepage
-        </li>
+        <li class="homepage" onclick="location.href='/homepage.html'">Homepage</li>
         <li class="income" onclick="location.href='/income.html'">Income</li>
         <li class="expenses" onclick="location.href='/expense.html'">
           Expense
@@ -59,10 +58,11 @@
             <button type="submit">Send</button>
           </div>
         </form>
+        <div id="incometable"></div>
       </div>
     </div>
     <footer><span id="about">About us</span><span id="eeesa">EeesSa Solutions</span></footer>
-    <script src="/js/income.js"></script>
+    <script type = "module" src="/js/income.js"></script>
   </main>
 </body>
 

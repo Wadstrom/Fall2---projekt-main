@@ -21,7 +21,7 @@ const GetBudgetsByUserIdPromise = () => {
       entertainmentBudget = sortYear.filter(category => category.Category === "Entertainment")
     })
 };
-//-----------------------------Getting Expenses and sorting-----------------------
+//-----------------------------Getting Expenses and sorting-------------------------------
 var expenses = []
 var groceriesExpense
 let fixedcostsExpense
