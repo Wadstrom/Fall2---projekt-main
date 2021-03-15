@@ -6,3 +6,32 @@
   text-align: start;
   color: #7d92c5;
 }
+ 
+#welcome{
+   padding: 10px;
+   display: inline-block;
+   text-align: justify;
+}
+.infoBudget{
+  display: flex;
+  justify-content: space-around;
+}
+.flexbox{
+  padding: 1em;
+  border: 1px black solid;
+  background-image: linear-gradient( blanchedalmond, rgb(168, 168, 214));
+  
+}
+#budget{
+ color:rgb(28, 97, 51)
+}
+#expense{
+  color:rgb(194, 37, 71)
+}
+#remaining{
+  color:rgb(32, 32, 207)
+}
+footer{
+  display:flex;
+  justify-content: space-between;
+}
