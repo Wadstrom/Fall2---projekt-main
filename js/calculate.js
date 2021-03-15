@@ -1,9 +1,5 @@
 import cookieUserID from "./cookiecutter.js";
 
-//calculate remaining budget
-// get-budget.catagory and amount. Get all expenses for that catagory.
-//then ammount minus the TOTAL of expenses
-//budget - expenses i den kategorien = kvar av budget.
 //----------------------------Getting Budgets and sorting-------------------------------
 var budgets = []
 var groceriesBudget
@@ -18,15 +14,14 @@ const GetBudgetsByUserIdPromise = () => {
       for (let i = 0; i < data.length; i++) {
         budgets[i] = { Category: data[i].Category, Amount: data[i].Amount, Date: data[i].Date}
       }
-      let sortDateE = budgets.filter(date => new Date(date.Date).getMonth() === getDateNow());
+      let sortDateE = budgets.filter(date => new Date(date.Date).getMonth() === getMonthNow());
       let sortYear= sortDateE.filter(year => new Date(year.Date).getFullYear() === getYearNow())
       groceriesBudget = sortYear.filter(category => category.Category === 'Groceries');
       fixedcostsBudget = sortYear.filter(category => category.Category === "Fixed Cost")
       entertainmentBudget = sortYear.filter(category => category.Category === "Entertainment")
-      
     })
 };
-//-----------------------------Getting expenses_ANd sorting-----------------------
+//-----------------------------Getting Expenses and sorting-----------------------
 var expenses = []
 var groceriesExpense
 let fixedcostsExpense
@@ -40,13 +35,24 @@ const GetExpensesByUserIdPromise = () => {
       for (let i = 0; i < data.length; i++) {
         expenses[i] = { Category: data[i].Category, ExpenseAmount: data[i].ExpenseAmount, TransactionDate: data[i].TransactionDate }
       }
-      let sortDateE = expenses.filter(date => new Date(date.TransactionDate).getMonth() === getDateNow());
+      let sortDateE = expenses.filter(date => new Date(date.TransactionDate).getMonth() === getMonthNow());
       let sortYear= sortDateE.filter(year => new Date(year.TransactionDate).getFullYear() === getYearNow())
       groceriesExpense = sortYear.filter(category => category.Category === 'Groceries');
       fixedcostsExpense = sortYear.filter(category => category.Category === "Fixed Cost")
       entertainmentExpense = sortYear.filter(category => category.Category === "Entertainment") 
     })
 };
+//-----------------------------------------------Filter Sort Date Functions-------------------------------------------------
+function getMonthNow(){
+  const today = new Date();
+  let month = today.getMonth();
+  return month;
+}
+function getYearNow(){
+  const today= new Date();
+  let year = today.getFullYear();
+  return year;
+}
 //----------------------------------print functions-----------------------------
 function printBudgets() {
   GetBudgetsByUserIdPromise().then(() => {
@@ -62,7 +68,7 @@ function printExpenses() {
     document.getElementById("remaining").innerHTML += "<br>" + "Groceries: " + totalRemainingGroceries + "<br>" + "Fixed Costs: " + totalRemainingFixedCosts + "<br>" + "Entertainment: " + totalRemainingEntertainment;
   });
 }
-//-------------------Calculate function--------------------------------------------(p.All < lista promise. Kolla. )
+//-------------------Calculate function--------------------------------------------(p.All < lista promise. Kolla. )---prata om att ta in param i functions.
 let totalRemainingGroceries = 0;
  let totalRemainingFixedCosts = 0;
  let totalRemainingEntertainment = 0;
@@ -96,17 +102,6 @@ const calculateExpenses = () => {
     totalRemainingEntertainment -= entertainmentExpense[i].ExpenseAmount
     totalExpenseEntertainment += entertainmentExpense[i].ExpenseAmount
   }
-}
-//-----------------------------------------------Filter Sort Date Functions-------------------------------------------------
-function getDateNow(){
-  const today = new Date();
-  let month = today.getMonth();
-  return month;
-}
-function getYearNow(){
-  const today= new Date();
-  let year = today.getFullYear();
-  return year;
 }
 
 printBudgets()
