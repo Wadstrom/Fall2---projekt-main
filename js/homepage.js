@@ -23,10 +23,5 @@ function checkCookie() {
   }
 
 }
-/*const footer = document.querySelectorAll("footer");
-const foot = (e) => {
-  let target = e.target
-
-}*/
 checkCookie();
 

@@ -14,11 +14,11 @@ const GetBudgetsByUserIdPromise = () => {
       for (let i = 0; i < data.length; i++) {
         budgets[i] = { Category: data[i].Category, Amount: data[i].Amount, Date: data[i].Date}
       }
-      let sortDateE = budgets.filter(date => new Date(date.Date).getMonth() === getMonthNow());
-      let sortYear= sortDateE.filter(year => new Date(year.Date).getFullYear() === getYearNow())
-      groceriesBudget = sortYear.filter(category => category.Category === 'Groceries');
-      fixedcostsBudget = sortYear.filter(category => category.Category === "Fixed Cost")
-      entertainmentBudget = sortYear.filter(category => category.Category === "Entertainment")
+      let filterDate = budgets.filter(date => new Date(date.Date).getMonth() === getMonthNow());
+      let filterYear= filterDate.filter(year => new Date(year.Date).getFullYear() === getYearNow())
+      groceriesBudget = filterYear.filter(category => category.Category === 'Groceries');
+      fixedcostsBudget = filterYear.filter(category => category.Category === "Fixed Cost")
+      entertainmentBudget = filterYear.filter(category => category.Category === "Entertainment")
     })
 };
 //-----------------------------Getting Expenses and sorting-------------------------------
@@ -33,13 +33,13 @@ const GetExpensesByUserIdPromise = () => {
     })
     .then((data) => {
       for (let i = 0; i < data.length; i++) {
-        expenses[i] = { Category: data[i].Category, ExpenseAmount: data[i].ExpenseAmount, TransactionDate: data[i].TransactionDate }
+        expenses[i] = { Category: data[i].Category, Amount: data[i].Amount, Date: data[i].Date }
       }
-      let sortDateE = expenses.filter(date => new Date(date.TransactionDate).getMonth() === getMonthNow());
-      let sortYear= sortDateE.filter(year => new Date(year.TransactionDate).getFullYear() === getYearNow())
-      groceriesExpense = sortYear.filter(category => category.Category === 'Groceries');
-      fixedcostsExpense = sortYear.filter(category => category.Category === "Fixed Cost")
-      entertainmentExpense = sortYear.filter(category => category.Category === "Entertainment") 
+      let filterDate = expenses.filter(date => new Date(date.Date).getMonth() === getMonthNow());
+      let filterYear= filterDate.filter(year => new Date(year.Date).getFullYear() === getYearNow())
+      groceriesExpense = filterYear.filter(category => category.Category === 'Groceries');
+      fixedcostsExpense = filterYear.filter(category => category.Category === "Fixed Cost")
+      entertainmentExpense = filterYear.filter(category => category.Category === "Entertainment") 
     })
 };
 //-----------------------------------------------Filter Sort Date Functions-------------------------------------------------

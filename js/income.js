@@ -6,10 +6,10 @@ forms.onsubmit = (e) => {
   console.log(e);
 
   let requestObject = {
-    IncomeName: e.target[0].value,
-    IncomeAmount: e.target[1].value,
-    TransactionDate: e.target[2].value,
-    UserId: cookieUserID,
+    Name: e.target[0].value,
+    Amount: e.target[1].value,
+    Date: e.target[2].value,
+    UserID: cookieUserID,
   };
 
   fetch("https://localhost:44357/api/Income", {
@@ -21,13 +21,17 @@ forms.onsubmit = (e) => {
   });
 };
 //GET
-const GetIncomeByUserId = () => {
+const GetIncomeByUserID = () => {
   fetch("https://localhost:44357/api/Income/" + cookieUserID)
     .then((response) => {
       return response.json();
     })
     .then((data) => {
       generateTable(data);
+      data.forEach((item) => {
+        item.Date = item.Date.slice(0, 10);
+      });
+      generateTable(data);
     });
 };
-GetIncomeByUserId();
+GetIncomeByUserID();

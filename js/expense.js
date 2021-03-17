@@ -1,15 +1,15 @@
 import cookieUserID from "./cookiecutter.js";
-import generateTable from "./tableGenerator.js"
+import generateTable from "./tableGenerator.js";
 forms.onsubmit = (e) => {
   e.preventDefault();
   console.log(e);
 
   let requestObject = {
-    ExpenseName: e.target[0].value,
+    Name: e.target[0].value,
     Category: e.target[1].value,
-    TransactionDate: e.target[2].value,
-    ExpenseAmount: e.target[3].value,
-    UserId: cookieUserID,
+    Date: e.target[2].value,
+    Amount: e.target[3].value,
+    UserID: cookieUserID,
   };
 
   fetch("https://localhost:44357/api/expense/", {
@@ -33,8 +33,5 @@ const getExpenseData = () => {
       generateTable(data);
     });
 };
-      
-getExpenseData()
 
-
-
+getExpenseData();
