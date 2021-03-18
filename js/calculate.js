@@ -2,7 +2,6 @@ import cookieUserID from "./cookiecutter.js";
 
 //----------------------------Getting Budgets and sorting-------------------------------
 
-
 const GetBudgetsByUserIdPromise = () => {
   var budgets = []
   let arr = []
@@ -42,7 +41,11 @@ const GetExpensesByUserIdPromise = () => {
     })
     .then((data) => {
       for (let i = 0; i < data.length; i++) {
-        expenses[i] = { Category: data[i].Category, Amount: data[i].Amount, Date: data[i].Date }
+        expenses[i] = {
+          Category: data[i].Category,
+          Amount: data[i].Amount,
+          Date: data[i].Date,
+        };
       }
       let filterDate = expenses.filter(date => new Date(date.Date).getMonth() === getMonthNow());
       let filterYear = filterDate.filter(year => new Date(year.Date).getFullYear() === getYearNow())
@@ -75,8 +78,26 @@ function printBudgets() {
 function printExpenses() {
   GetExpensesByUserIdPromise().then(() => {
     calculateExpenses();
-    document.getElementById("expense").innerHTML += "<br>" + "Groceries: " + totalExpenseGroceries + "<br>" + "Fixed Costs: " + totalExpenseFixedCosts + "<br>" + "Entertainment: " + totalExpenseEntertainment;
-    document.getElementById("remaining").innerHTML += "<br>" + "Groceries: " + totalRemainingGroceries + "<br>" + "Fixed Costs: " + totalRemainingFixedCosts + "<br>" + "Entertainment: " + totalRemainingEntertainment;
+    document.getElementById("expense").innerHTML +=
+      "<br>" +
+      "Groceries: " +
+      totalExpenseGroceries +
+      "<br>" +
+      "Fixed Costs: " +
+      totalExpenseFixedCosts +
+      "<br>" +
+      "Entertainment: " +
+      totalExpenseEntertainment;
+    document.getElementById("remaining").innerHTML +=
+      "<br>" +
+      "Groceries: " +
+      totalRemainingGroceries +
+      "<br>" +
+      "Fixed Costs: " +
+      totalRemainingFixedCosts +
+      "<br>" +
+      "Entertainment: " +
+      totalRemainingEntertainment;
   });
 }
 //-------------------Calculate function--------------------------------------------(p.All < lista promise. Kolla. )---prata om att ta in param i functions.
@@ -109,17 +130,17 @@ const calculateBudgets = (arr) => {
 }
 const calculateExpenses = () => {
   for (let i = 0; i < groceriesExpense.length; i++) {
-    totalRemainingGroceries -= groceriesExpense[i].Amount
-    totalExpenseGroceries += groceriesExpense[i].Amount
+    totalRemainingGroceries -= groceriesExpense[i].Amount;
+    totalExpenseGroceries += groceriesExpense[i].Amount;
   }
   for (let i = 0; i < fixedcostsExpense.length; i++) {
-    totalRemainingFixedCosts -= fixedcostsExpense[i].Amount
-    totalExpenseFixedCosts += fixedcostsExpense[i].Amount
+    totalRemainingFixedCosts -= fixedcostsExpense[i].Amount;
+    totalExpenseFixedCosts += fixedcostsExpense[i].Amount;
   }
   for (let i = 0; i < entertainmentExpense.length; i++) {
-    totalRemainingEntertainment -= entertainmentExpense[i].Amount
-    totalExpenseEntertainment += entertainmentExpense[i].Amount
+    totalRemainingEntertainment -= entertainmentExpense[i].Amount;
+    totalExpenseEntertainment += entertainmentExpense[i].Amount;
   }
-}
+};
 
-printBudgets()
+printBudgets();

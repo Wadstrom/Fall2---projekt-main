@@ -1,10 +1,3 @@
-const FunnyArray = [
-  "HA-HA Wrong!",
-  "Pass wrong.. or maybe.. maybe mail..",
-  "Come on! Wrong Mail or Pass",
-  "You shall not pass!!",
-];
-
 let UserID;
 
 loginForm.onsubmit = (e) => {
@@ -32,8 +25,11 @@ loginForm.onsubmit = (e) => {
         setCookie("User", UserID);
         window.location.href = "homepage.html";
       } else {
-        document.getElementById("failedLogIn").innerHTML =
-          FunnyArray[Math.floor(Math.random() * FunnyArray.length)];
+        var failedLogIn = document.createElement("p");
+        failedLogIn.appendChild(
+          document.createTextNode("Wrong Email or password. Please try again")
+        );
+        document.getElementById("failedLogIn").appendChild(failedLogIn);
       }
     });
   function setCookie(cname, cvalue) {
