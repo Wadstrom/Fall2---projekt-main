@@ -1,32 +1,41 @@
 import cookieUserID from "./cookiecutter.js";
 
 //----------------------------Getting Budgets and sorting-------------------------------
-var budgets = []
-var groceriesBudget
-let fixedcostsBudget
-let entertainmentBudget
+
+
 const GetBudgetsByUserIdPromise = () => {
+  var budgets = []
+  let arr = []
+  var groceriesBudget
+  let entertainmentBudget
+  let fixedcostsBudget
   return fetch("https://localhost:44357/api/budget/" + cookieUserID)
     .then((response) => {
       return response.json();
     })
     .then((data) => {
+
       for (let i = 0; i < data.length; i++) {
-        budgets[i] = { Category: data[i].Category, Amount: data[i].Amount, Date: data[i].Date}
+        budgets[i] = { Category: data[i].Category, Amount: data[i].Amount, Date: data[i].Date }
       }
       let filterDate = budgets.filter(date => new Date(date.Date).getMonth() === getMonthNow());
-      let filterYear= filterDate.filter(year => new Date(year.Date).getFullYear() === getYearNow())
+      let filterYear = filterDate.filter(year => new Date(year.Date).getFullYear() === getYearNow())
       groceriesBudget = filterYear.filter(category => category.Category === 'Groceries');
       fixedcostsBudget = filterYear.filter(category => category.Category === "Fixed Cost")
       entertainmentBudget = filterYear.filter(category => category.Category === "Entertainment")
-    })
+    }).then(() => { arr.push(groceriesBudget, fixedcostsBudget, entertainmentBudget) }).then
+    (() => { return arr })
+
 };
+console.log(GetBudgetsByUserIdPromise())
 //-----------------------------Getting Expenses and sorting-------------------------------
-var expenses = []
-var groceriesExpense
-let fixedcostsExpense
-let entertainmentExpense
+
 const GetExpensesByUserIdPromise = () => {
+  var expenses = []
+  let arr = []
+  var groceriesExpense
+  let fixedcostsExpense
+  let entertainmentExpense
   return fetch("https://localhost:44357/api/Expense/" + cookieUserID)
     .then((response) => {
       return response.json();
@@ -36,27 +45,29 @@ const GetExpensesByUserIdPromise = () => {
         expenses[i] = { Category: data[i].Category, Amount: data[i].Amount, Date: data[i].Date }
       }
       let filterDate = expenses.filter(date => new Date(date.Date).getMonth() === getMonthNow());
-      let filterYear= filterDate.filter(year => new Date(year.Date).getFullYear() === getYearNow())
+      let filterYear = filterDate.filter(year => new Date(year.Date).getFullYear() === getYearNow())
       groceriesExpense = filterYear.filter(category => category.Category === 'Groceries');
       fixedcostsExpense = filterYear.filter(category => category.Category === "Fixed Cost")
-      entertainmentExpense = filterYear.filter(category => category.Category === "Entertainment") 
-    })
+      entertainmentExpense = filterYear.filter(category => category.Category === "Entertainment")
+    }).then(() => { arr.push(groceriesExpense, fixedcostsExpense, entertainmentExpense) }).then
+    (() => { return arr })
 };
+console.log(GetExpensesByUserIdPromise())
 //-----------------------------------------------Filter Sort Date Functions-------------------------------------------------
-function getMonthNow(){
+function getMonthNow() {
   const today = new Date();
   let month = today.getMonth();
   return month;
 }
-function getYearNow(){
-  const today= new Date();
+function getYearNow() {
+  const today = new Date();
   let year = today.getFullYear();
   return year;
 }
 //----------------------------------print functions-----------------------------
 function printBudgets() {
   GetBudgetsByUserIdPromise().then(() => {
-    calculateBudgets(); 
+    calculateBudgets();
     document.getElementById("budget").innerHTML += "<br>" + "Groceries: " + totalBudgetGroceries + "<br>" + "Fixed Costs: " + totalBudgetFixedCosts + "<br>" + "Entertainment: " + totalBudgetEntertainment;
     printExpenses()
   });
@@ -70,24 +81,31 @@ function printExpenses() {
 }
 //-------------------Calculate function--------------------------------------------(p.All < lista promise. Kolla. )---prata om att ta in param i functions.
 let totalRemainingGroceries = 0;
- let totalRemainingFixedCosts = 0;
- let totalRemainingEntertainment = 0;
+let totalRemainingFixedCosts = 0;
+let totalRemainingEntertainment = 0;
 let totalExpenseGroceries = 0, totalExpenseFixedCosts = 0, totalExpenseEntertainment = 0;
 let totalBudgetGroceries = 0, totalBudgetFixedCosts = 0, totalBudgetEntertainment = 0;
 
-const calculateBudgets = () => {
-  for (let i = 0; i < groceriesBudget.length; i++) {
-    totalRemainingGroceries += groceriesBudget[i].Amount
-    totalBudgetGroceries += groceriesBudget[i].Amount
+const calculateBudgets = (arr) => {
+  if (arr.Category === "Groceries") {
+    for (let i = 0; i < arr.length; i++) {
+      totalRemainingGroceries += arr[i].Amount
+      totalBudgetGroceries += arr[i].Amount
+    }
   }
-  for (let i = 0; i < fixedcostsBudget.length; i++) {
-    totalRemainingFixedCosts += fixedcostsBudget[i].Amount
-    totalBudgetFixedCosts += fixedcostsBudget[i].Amount
+  else if (arr.Category === "Fixed Cost") {
+    for (let i = 0; i < arr.length; i++) {
+      totalRemainingFixedCosts += arr[i].Amount
+      totalBudgetFixedCosts += arr[i].Amount
+    }
   }
-  for (let i = 0; i < entertainmentBudget.length; i++) {
-    totalRemainingEntertainment += entertainmentBudget[i].Amount
-    totalBudgetEntertainment += entertainmentBudget[i].Amount
+  else {
+    for (let i = 0; i < arr.length; i++) {
+      totalRemainingEntertainment += arr[i].Amount
+      totalBudgetEntertainment += arr[i].Amount
+    }
   }
+
 }
 const calculateExpenses = () => {
   for (let i = 0; i < groceriesExpense.length; i++) {
