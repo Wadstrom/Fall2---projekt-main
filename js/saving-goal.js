@@ -28,14 +28,11 @@ const getSavingData = () => {
       return response.json();
     })
     .then((data) => {
-     
       data.forEach(function (obj) {
         //för att räkna ut dagar/månader -------------------------------------------------------------------------
         var msSpan =
           new Date(obj.ReachDate) - new Date(obj.StartDate);
-        var daySpan = msSpan / (1000 * 60 * 60 * 24); //(ms * minut * h * dag)
-        console.log(msSpan, "ms");
-        console.log(daySpan, "dagar");
+        var daySpan = msSpan / (1000 * 60 * 60 * 24); //(1000ms * 60minut * 60h * 24dag)
         var saveEveryDay = obj.Amount / daySpan;
         var saveEveryMonth = obj.Amount / (daySpan / 30);
         if (daySpan <= 31) {
@@ -43,14 +40,13 @@ const getSavingData = () => {
         } else {
           saveEveryMonth = saveEveryMonth.toFixed(2);
         }
-
-        console.log(saveEveryMonth, "/månad");
-        console.log(saveEveryDay, "/dag");
         //räknar till hit ------------------------------------------------------------------------------------------
-obj["Save every day"] = saveEveryDay.toFixed(2)
-obj["Save every month"] = saveEveryMonth
+        obj["Save every day"] = saveEveryDay.toFixed(2) 
+        obj["Save every month"] = saveEveryMonth
       });
 generateTable(data)
     });
 };
 getSavingData()
+
+
