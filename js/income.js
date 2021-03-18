@@ -27,7 +27,6 @@ const GetIncomeByUserID = () => {
       return response.json();
     })
     .then((data) => {
-      generateTable(data);
       data.forEach((item) => {
         item.Date = item.Date.slice(0, 10);
       });

@@ -2,10 +2,10 @@
 const generateTable = (data) => {
   // get the reference for the body
   var body = document.getElementById("table-div");
-  // creates a <table> element and a <tbody> element
+  // Create table and table body
   var tbl = document.createElement("table");
   var tblBody = document.createElement("tbody");
-  //Declare the prop keys from data - [0] because we know the prop key won't change
+  //Declare the prop keys from data - "[0]" because we know the prop key won't change
   var propKey = Object.keys(data[0]);
   data.unshift(data[0]);
   // ROWS (one row = i)
@@ -32,9 +32,9 @@ const generateTable = (data) => {
     // add the row to the end of the table body
     tblBody.appendChild(row);
   }
-  // put the <tbody> in the <table>
+  // append tbody in the table
   tbl.appendChild(tblBody);
-  // appends table into our div
+  // append table into our table-div
   body.appendChild(tbl);
 };
 export default generateTable;
