@@ -91,16 +91,16 @@ const calculateBudgets = () => {
 }
 const calculateExpenses = () => {
   for (let i = 0; i < groceriesExpense.length; i++) {
-    totalRemainingGroceries -= groceriesExpense[i].ExpenseAmount
-    totalExpenseGroceries += groceriesExpense[i].ExpenseAmount
+    totalRemainingGroceries -= groceriesExpense[i].Amount
+    totalExpenseGroceries += groceriesExpense[i].Amount
   }
   for (let i = 0; i < fixedcostsExpense.length; i++) {
-    totalRemainingFixedCosts -= fixedcostsExpense[i].ExpenseAmount
-    totalExpenseFixedCosts += fixedcostsExpense[i].ExpenseAmount
+    totalRemainingFixedCosts -= fixedcostsExpense[i].Amount
+    totalExpenseFixedCosts += fixedcostsExpense[i].Amount
   }
   for (let i = 0; i < entertainmentExpense.length; i++) {
-    totalRemainingEntertainment -= entertainmentExpense[i].ExpenseAmount
-    totalExpenseEntertainment += entertainmentExpense[i].ExpenseAmount
+    totalRemainingEntertainment -= entertainmentExpense[i].Amount
+    totalExpenseEntertainment += entertainmentExpense[i].Amount
   }
 }
 
