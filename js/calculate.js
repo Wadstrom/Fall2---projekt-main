@@ -4,7 +4,7 @@ import cookieUserID from "./cookiecutter.js";
 
 const GetBudgetsByUserIdPromise = () => {
   var budgets = []
-  let arr = []
+  let filterYear
   var groceriesBudget
   let entertainmentBudget
   let fixedcostsBudget
@@ -14,16 +14,12 @@ const GetBudgetsByUserIdPromise = () => {
     })
     .then((data) => {
 
-      for (let i = 0; i < data.length; i++) {
-        budgets[i] = { Category: data[i].Category, Amount: data[i].Amount, Date: data[i].Date }
-      }
-      let filterDate = budgets.filter(date => new Date(date.Date).getMonth() === getMonthNow());
-      let filterYear = filterDate.filter(year => new Date(year.Date).getFullYear() === getYearNow())
-      groceriesBudget = filterYear.filter(category => category.Category === 'Groceries');
-      fixedcostsBudget = filterYear.filter(category => category.Category === "Fixed Cost")
-      entertainmentBudget = filterYear.filter(category => category.Category === "Entertainment")
-    }).then(() => { arr.push(groceriesBudget, fixedcostsBudget, entertainmentBudget) }).then
-    (() => { return arr })
+      
+      // groceriesBudget = filterYear.filter(category => category.Category === 'Groceries');
+      // fixedcostsBudget = filterYear.filter(category => category.Category === "Fixed Cost")
+      // entertainmentBudget = filterYear.filter(category => category.Category === "Entertainment")
+  
+    }).then(() => { return filterYear })
 
 };
 console.log(GetBudgetsByUserIdPromise())
@@ -57,16 +53,7 @@ const GetExpensesByUserIdPromise = () => {
 };
 console.log(GetExpensesByUserIdPromise())
 //-----------------------------------------------Filter Sort Date Functions-------------------------------------------------
-function getMonthNow() {
-  const today = new Date();
-  let month = today.getMonth();
-  return month;
-}
-function getYearNow() {
-  const today = new Date();
-  let year = today.getFullYear();
-  return year;
-}
+
 //----------------------------------print functions-----------------------------
 function printBudgets() {
   GetBudgetsByUserIdPromise().then(() => {
