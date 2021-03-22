@@ -1,63 +1,36 @@
 import cookieUserID from "./cookiecutter.js";
-
+import {filterCurrentMonthYear, getMonthNow, getYearNow  } from "./workhorse.js";
 //----------------------------Getting Budgets and sorting-------------------------------
 
 const GetBudgetsByUserIdPromise = () => {
-  var budgets = []
-  let filterYear
-  var groceriesBudget
-  let entertainmentBudget
-  let fixedcostsBudget
   return fetch("https://localhost:44357/api/budget/" + cookieUserID)
-    .then((response) => {
-      return response.json();
-    })
-    .then((data) => {
-
-      
-      // groceriesBudget = filterYear.filter(category => category.Category === 'Groceries');
-      // fixedcostsBudget = filterYear.filter(category => category.Category === "Fixed Cost")
-      // entertainmentBudget = filterYear.filter(category => category.Category === "Entertainment")
-  
-    }).then(() => { return filterYear })
-
+  .then((response) => {
+    return response.json();
+  })
+  .then((data) => { return data})
 };
-console.log(GetBudgetsByUserIdPromise())
 //-----------------------------Getting Expenses and sorting-------------------------------
 
 const GetExpensesByUserIdPromise = () => {
-  var expenses = []
-  let arr = []
-  var groceriesExpense
-  let fixedcostsExpense
-  let entertainmentExpense
-  return fetch("https://localhost:44357/api/Expense/" + cookieUserID)
+   return fetch("https://localhost:44357/api/Expense/" + cookieUserID)
     .then((response) => {
       return response.json();
     })
-    .then((data) => {
-      for (let i = 0; i < data.length; i++) {
-        expenses[i] = {
-          Category: data[i].Category,
-          Amount: data[i].Amount,
-          Date: data[i].Date,
-        };
-      }
-      let filterDate = expenses.filter(date => new Date(date.Date).getMonth() === getMonthNow());
-      let filterYear = filterDate.filter(year => new Date(year.Date).getFullYear() === getYearNow())
-      groceriesExpense = filterYear.filter(category => category.Category === 'Groceries');
-      fixedcostsExpense = filterYear.filter(category => category.Category === "Fixed Cost")
-      entertainmentExpense = filterYear.filter(category => category.Category === "Entertainment")
-    }).then(() => { arr.push(groceriesExpense, fixedcostsExpense, entertainmentExpense) }).then
-    (() => { return arr })
-};
-console.log(GetExpensesByUserIdPromise())
+    .then((data) => {return data})
+  }
+
+  
+
+var bud = GetBudgetsByUserIdPromise().then((result) => {return filterCurrentMonthYear(result)}); 
+var exp = GetExpensesByUserIdPromise().then((result) => {return filterCurrentMonthYear(result)})
+console.log(bud)
+console.log(exp)
 //-----------------------------------------------Filter Sort Date Functions-------------------------------------------------
 
 //----------------------------------print functions-----------------------------
 function printBudgets() {
-  GetBudgetsByUserIdPromise().then(() => {
-    calculateBudgets();
+  GetBudgetsByUserIdPromise().then((data) => {
+    calculateBudgets(GetBudgetsByUserIdPromise(),GetExpensesByUserIdPromise());
     document.getElementById("budget").innerHTML += "<br>" + "Groceries: " + totalBudgetGroceries + "<br>" + "Fixed Costs: " + totalBudgetFixedCosts + "<br>" + "Entertainment: " + totalBudgetEntertainment;
     printExpenses()
   });
@@ -88,33 +61,58 @@ function printExpenses() {
   });
 }
 //-------------------Calculate function--------------------------------------------(p.All < lista promise. Kolla. )---prata om att ta in param i functions.
-let totalRemainingGroceries = 0;
-let totalRemainingFixedCosts = 0;
-let totalRemainingEntertainment = 0;
-let totalExpenseGroceries = 0, totalExpenseFixedCosts = 0, totalExpenseEntertainment = 0;
-let totalBudgetGroceries = 0, totalBudgetFixedCosts = 0, totalBudgetEntertainment = 0;
 
-const calculateBudgets = (arr) => {
-  if (arr.Category === "Groceries") {
-    for (let i = 0; i < arr.length; i++) {
+
+
+
+const calculateBudgets = (arr, earr) => {
+  console.log(arr)
+  let totalRemainingGroceries;
+  let totalRemainingFixedCosts;
+  let totalRemainingEntertainment;
+  let totalBudgetGroceries, totalBudgetFixedCosts, totalBudgetEntertainment;
+  let totalExpenseGroceries, totalExpenseFixedCosts, totalExpenseEntertainment;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr.Category === "Groceries") {
       totalRemainingGroceries += arr[i].Amount
       totalBudgetGroceries += arr[i].Amount
     }
-  }
-  else if (arr.Category === "Fixed Cost") {
-    for (let i = 0; i < arr.length; i++) {
+    else if (arr.Category === "Fixed Cost") {
       totalRemainingFixedCosts += arr[i].Amount
       totalBudgetFixedCosts += arr[i].Amount
     }
-  }
-  else {
-    for (let i = 0; i < arr.length; i++) {
+    else if (arr.Category === "Entertainment") {
       totalRemainingEntertainment += arr[i].Amount
       totalBudgetEntertainment += arr[i].Amount
     }
+    else {
+      continue
+    }
   }
-
-}
+  for (let i = 0; i < earr.length; i++) {
+    if (earr.Category === "Groceries") {
+      totalRemainingGroceries -= earr[i].Amount
+      totalExpenseGroceries += earr[i].Amount
+    }
+    else if (earr.Category === "Fixed Cost") {
+      totalRemainingFixedCosts -= earr[i].Amount
+      totalExpenseFixedCosts += earr[i].Amount
+    }
+    else if (earr.Category === "Entertainment") {
+      totalRemainingEntertainment -= earr[i].Amount
+      totalExpenseEntertainment += earr[i].Amount
+    }
+    else {
+      continue
+    }
+  }
+  var returnArray = [
+    totalRemainingGroceries, totalRemainingFixedCosts, totalRemainingEntertainment,
+    totalBudgetGroceries, totalBudgetFixedCosts, totalBudgetEntertainment, 
+    totalExpenseGroceries, totalExpenseFixedCosts, totalExpenseEntertainment]
+  return returnArray
+};
+console.log(calculateBudgets(bud,exp))
 const calculateExpenses = () => {
   for (let i = 0; i < groceriesExpense.length; i++) {
     totalRemainingGroceries -= groceriesExpense[i].Amount;
@@ -130,4 +128,4 @@ const calculateExpenses = () => {
   }
 };
 
-printBudgets();
+//printBudgets();
