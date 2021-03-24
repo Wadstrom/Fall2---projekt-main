@@ -1,9 +1,9 @@
 //-----------------------------------------
-const generateTable = (data) => {
+const generateTable = (data, tableDiv) => {
   console.log("data: ");
   console.log(data);
   // get the reference for the body
-  var tableDiv = document.getElementById("table-div");
+  var tableDiv = document.getElementById(tableDiv);
   // create table and table body
   var tbl = document.createElement("table");
   var tblBody = document.createElement("tbody");

@@ -52,7 +52,7 @@ const getSavingData = () => {
         obj["Save every day"] = saveEveryDay.toFixed(2);
         obj["Save every month"] = saveEveryMonth;
       });
-      generateTable(data);
+      generateTable(data, "table-div");
     });
 };
 getSavingData();

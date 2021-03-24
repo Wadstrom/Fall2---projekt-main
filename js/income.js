@@ -30,7 +30,7 @@ const GetIncomeByUserID = () => {
       data.forEach((item) => {
         item.Date = item.Date.slice(0, 10);
       });
-      generateTable(data);
+      generateTable(data, "table-div");
     });
 };
 GetIncomeByUserID();
