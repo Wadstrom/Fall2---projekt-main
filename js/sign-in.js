@@ -25,11 +25,9 @@ loginForm.onsubmit = (e) => {
         setCookie("User", UserID);
         window.location.href = "homepage.html";
       } else {
-        var failedLogIn = document.createElement("p");
-        failedLogIn.appendChild(
-          document.createTextNode("Wrong Email or password. Please try again")
-        );
-        document.getElementById("failedLogIn").appendChild(failedLogIn);
+
+        document.getElementById("ErrorMessage").style.visibility = "Visible"
+       
       }
     });
   function setCookie(cname, cvalue) {
