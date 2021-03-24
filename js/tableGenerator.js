@@ -26,15 +26,15 @@ const generateTable = (data) => {
 
     //COLUMNS (one column = c) creating a column until objKey.length is reached
     for (var c = 0; c < objKey.length; c++) {
-      var td = document.createElement("td");
-      var th = document.createElement("th");
       //if row === 0 then write out th
       if (r === 0) {
+        var th = document.createElement("th");
         var headerText = document.createTextNode(objKey[c]);
         th.appendChild(headerText);
         row.appendChild(th);
         //else write out all td
       } else {
+        var td = document.createElement("td");
         var cellText = document.createTextNode(objValue[c]);
         td.appendChild(cellText);
         row.appendChild(td);
