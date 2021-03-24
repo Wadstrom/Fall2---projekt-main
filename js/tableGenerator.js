@@ -3,7 +3,7 @@ const generateTable = (data) => {
   console.log("data: ");
   console.log(data);
   // get the reference for the body
-  var body = document.getElementById("table-div");
+  var tableDiv = document.getElementById("table-div");
   // create table and table body
   var tbl = document.createElement("table");
   var tblBody = document.createElement("tbody");
@@ -24,7 +24,7 @@ const generateTable = (data) => {
     console.log("objValue:");
     console.log(objValue);
 
-    //COLUMNS (one column = c) creating a column until objKey.length is reached
+    //COLUMNS (one column = c) creating a column until objKey.length is reached (still in the row-forloop)
     for (var c = 0; c < objKey.length; c++) {
       //if row === 0 then write out th
       if (r === 0) {
@@ -42,10 +42,11 @@ const generateTable = (data) => {
     }
     // add the row to the end of the table body
     tblBody.appendChild(row);
-  }
+  } //end for row-forloop
+
   // append tbody in the table
   tbl.appendChild(tblBody);
   // append table into our table-div
-  body.appendChild(tbl);
+  tableDiv.appendChild(tbl);
 };
 export default generateTable;
