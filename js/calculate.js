@@ -8,11 +8,14 @@ let expensesUnfilterd = GetExpensesByUserIdPromise();
 let budgetsFilterd =  filterCurrentMonthYear(await budgetsUnfilterd);
 let expensesFilterd =  filterCurrentMonthYear(await expensesUnfilterd);
 let result = calculateBudgets(await budgetsFilterd, await expensesFilterd);
-generateTable(result[0], "total-div")
-generateTable(result[1], "budget-div")
-generateTable(result[2], "expense-div")
+return result;
 };
-calculateBudgetsAndExpense()
+calculateBudgetsAndExpense().then((result)=>{
+  generateTable(result[0], "remaining")
+  //generateTable(result[1], "budget")
+  //generateTable(result[2], "expense")
+  
+})
 
 
 
