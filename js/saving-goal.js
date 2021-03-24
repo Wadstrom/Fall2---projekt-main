@@ -43,16 +43,16 @@ const getSavingData = () => {
         //Formatting date
         obj.StartDate = obj.StartDate.slice(0, 10);
         obj.ReachDate = obj.ReachDate.slice(0, 10);
-        //Renaming prop key
+        //Renaming obj key
         obj["Start Date"] = obj["StartDate"];
         obj["Reach Date"] = obj["StartDate"];
         delete obj["StartDate"];
         delete obj["ReachDate"];
-        //adding new prop key and value to object
+        //adding new obj key and value to object
         obj["Save every day"] = saveEveryDay.toFixed(2);
         obj["Save every month"] = saveEveryMonth;
       });
-      generateTable(data);
+      generateTable(data, "table-div");
     });
 };
 getSavingData();
