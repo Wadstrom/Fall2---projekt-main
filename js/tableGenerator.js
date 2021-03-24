@@ -1,19 +1,22 @@
 //-----------------------------------------
 const generateTable = (data) => {
+  console.log(data);
   // get the reference for the body
   var body = document.getElementById("table-div");
-  // Create table and table body
+  // create table and table body
   var tbl = document.createElement("table");
   var tblBody = document.createElement("tbody");
   //Declare the prop keys from data - "[0]" because we know the prop key won't change
+  //propkey is gonna be the table headers
   var propKey = Object.keys(data[0]);
+  //copying and adding the first data object to beginning
   data.unshift(data[0]);
-  // ROWS (one row = i)
+  // ROWS (one row = r)
   for (var r = 0; r < data.length; r++) {
     var row = document.createElement("tr");
     //Declare the prop value from data
     var propValue = Object.values(data[r]);
-    //COLUMNS (one column = j)
+    //COLUMNS (one column = c)
     for (var c = 0; c < propKey.length; c++) {
       var td = document.createElement("td");
       var th = document.createElement("th");
