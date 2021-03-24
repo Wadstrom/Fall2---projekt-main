@@ -16,7 +16,7 @@ const generateTable = (data) => {
   //copying and adding the first data object to beginning
   data.unshift(data[0]);
 
-  // ROWS (one row = r)
+  // ROWS (one row = r) creating a row until data.length is reached
   for (var r = 0; r < data.length; r++) {
     var row = document.createElement("tr");
     //Declare the obj value from data
@@ -24,7 +24,7 @@ const generateTable = (data) => {
     console.log("objValue:");
     console.log(objValue);
 
-    //COLUMNS (one column = c)
+    //COLUMNS (one column = c) creating a column until objKey.length is reached
     for (var c = 0; c < objKey.length; c++) {
       var td = document.createElement("td");
       var th = document.createElement("th");
