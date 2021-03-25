@@ -87,9 +87,9 @@ export const calculateBudgets = (arr, earr) => {
             "Your total Entertainment Budget": totalBudgetEntertainment
         },
         {
-            "Your total Groceriesexpense": totalExpenseGroceries,
-            "Your total Fixedcostsexpense": totalExpenseFixedCosts,
-            "Your total Entertainmentexpense": totalExpenseEntertainment
+            "Your total Groceries expense": totalExpenseGroceries,
+            "Your total Fixedcosts expense": totalExpenseFixedCosts,
+            "Your total Entertainment expense": totalExpenseEntertainment
         }]
     console.log(returnArray)
     return returnArray

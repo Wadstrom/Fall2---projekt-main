@@ -10,12 +10,11 @@ const generateTable = (data, tableDiv) => {
 
   //Declare the object keys from data - "[0]" because we know the obj keys won't change
   //objKey is gonna be the table headers
-  debugger
+  data.unshift(data[0]);
   var objKey = Object.keys(data[0]);
   console.log("objKey: ");
   console.log(objKey);
   //copying and adding the first data object to beginning
-  data.unshift(data[0]);
 
   // ROWS (one row = r) creating a row until data.length is reached
   for (var r = 0; r < data.length; r++) {
