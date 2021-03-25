@@ -10,6 +10,7 @@ const generateTable = (data, tableDiv) => {
 
   //Declare the object keys from data - "[0]" because we know the obj keys won't change
   //objKey is gonna be the table headers
+  debugger
   var objKey = Object.keys(data[0]);
   console.log("objKey: ");
   console.log(objKey);
