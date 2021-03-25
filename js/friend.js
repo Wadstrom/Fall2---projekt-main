@@ -1,5 +1,5 @@
 import generateTable from "./tableGenerator.js";
-import GetNameByUserIdPromise from "./fetches.js"
+import {GetUserByIdPromise} from "./fetches.js"
 var email;
 var firstname;
 var lastname;
@@ -9,7 +9,7 @@ GetyUserByIdPromise().then((result) => {
   email = result.Email;
   firstname = result.FirstName;
   lastname = result.LastName;
-});
+})()
 
 forms.onsubmit = (e) => {
   e.preventDefault();

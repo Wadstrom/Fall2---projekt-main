@@ -11,9 +11,9 @@ let result = calculateBudgets(budgetsFilterd, expensesFilterd);
 return result;
 };
 calculateBudgetsAndExpense().then((result)=>{
-  generateTable([result[0]],"budget")
-  generateTable([result[1]],"expense")
-  generateTable([result[2]],"remaining")
+  generateTable([result[0]],"remaining")
+  generateTable([result[1]],"budget")
+  generateTable([result[2]],"expense")
 })
 
 
