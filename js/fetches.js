@@ -8,8 +8,7 @@ export const GetBudgetsByUserIdPromise = () => {
         })
         .then((data) => { return data })
 };
-
-
+//---
 export const GetExpensesByUserIdPromise = () => {
     return fetch("https://localhost:44357/api/Expense/" + cookieUserID)
         .then((response) => {
@@ -17,3 +16,23 @@ export const GetExpensesByUserIdPromise = () => {
         })
         .then((data) => { return data })
 };
+//---
+export const GetUserByIdPromise = () => {
+    return fetch("https://localhost:44357/api/user/" + cookieUserID)
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => { return data})
+};
+//---
+export const GetNameByUserIdPromise = () => {
+    return fetch("https://localhost:44357/api/user/" + cookieUserID)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        return data.FirstName;
+      });
+  };
+
+  

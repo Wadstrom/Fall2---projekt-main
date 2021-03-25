@@ -1,7 +1,7 @@
 
 //----------------Collection of functions---------------
 
-//----------------Filter and sort-----------------------
+//----------------Filter and "sort"-----------------------
 // filterCurrentMonthYear needs getMonthNow and getYearNow
 export function filterCurrentMonthYear(arr) {
 
@@ -22,9 +22,6 @@ export function getYearNow() {
 }
 //------------------budget functions----------------------------
 export const calculateBudgets = (arr, earr) => {
-   
-    console.log(arr)
-    console.log(earr)
     let totalRemainingGroceries = 0;
     let totalRemainingFixedCosts = 0;
     let totalRemainingEntertainment = 0;
@@ -38,17 +35,14 @@ export const calculateBudgets = (arr, earr) => {
         if (arr[i].Category === "Groceries") {
             totalRemainingGroceries += arr[i].Amount
             totalBudgetGroceries += arr[i].Amount
-            console.log("inne i 1a")
         }
         else if (arr[i].Category === "Fixed Cost") {
             totalRemainingFixedCosts += arr[i].Amount
             totalBudgetFixedCosts += arr[i].Amount
-            console.log("inne i 2a")
         }
         else if (arr[i].Category === "Entertainment") {
             totalRemainingEntertainment += arr[i].Amount
             totalBudgetEntertainment += arr[i].Amount
-            console.log("inne i 3a")
         }
         else {
             i++
@@ -58,23 +52,19 @@ export const calculateBudgets = (arr, earr) => {
         if (earr[j].Category === "Groceries") {
             totalRemainingGroceries -= earr[j].Amount
             totalExpenseGroceries += earr[j].Amount
-            console.log("1")
         }
         else if (earr[j].Category === "Fixed Cost") {
             totalRemainingFixedCosts -= earr[j].Amount
             totalExpenseFixedCosts += earr[j].Amount
-            console.log("2")
         }
         else if (earr[j].Category === "Entertainment") {
             totalRemainingEntertainment -= earr[j].Amount
             totalExpenseEntertainment += earr[j].Amount
-            console.log("3")
         }
         else {
-            console.log("else")
             j++
         }
-    }; //<---then här kanske?
+    };
     var returnArray = [
         {
             "Groceries Budget left": totalRemainingGroceries,
@@ -91,6 +81,5 @@ export const calculateBudgets = (arr, earr) => {
             "Your total Fixedcosts expense": totalExpenseFixedCosts,
             "Your total Entertainment expense": totalExpenseEntertainment
         }]
-    console.log(returnArray)
     return returnArray
 };
