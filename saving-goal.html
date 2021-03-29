@@ -24,7 +24,7 @@
                 <li class="expenses" onclick="location.href='/expense.html'">Expense</li>
                 <li class="monthly-budget" onclick="location.href = '/monthly-budget.html'">Monthly Budget</li>
                 <li class="saving-goal">Saving Goal</li>
-                <li class="compare">Compare with friend</li>
+                <li class="social" onclick="location.href= '/social.html'">Social</li>
                 <li class="subscribe">Subscription</li>
                 <li class="sign-out" onclick="location.href= '/index.html'">
                     Sign out
@@ -58,13 +58,10 @@
                     </form>
                 </div>
 
-                <div>
-                    <table id="savingTable">
-
-                    </table>
-                </div>
-                <script onload="getSavingData()" src="/js/saving-goal.js"></script>
+               <div id="table-div"></div>
+                <script type="module" src="/js/saving-goal.js"></script>
     </main>
+    <footer><span id="about">About us</span><span id="eeesa">EeesSa Solutions</span></footer>
 </body>
 
 </html>

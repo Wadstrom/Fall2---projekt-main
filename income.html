@@ -7,6 +7,7 @@
   <link rel="stylesheet" type="text/css" href="css/site-skeleton.css" />
   <link rel="stylesheet" href="/css/income.css" />
   <link rel="stylesheet" href="/css/forms.css" />
+  <link rel="stylesheet" href="/css/table.css" />
   <title>DinBudget</title>
 </head>
 
@@ -18,9 +19,7 @@
     </div>
     <div class="sidebar">
       <ul class="sidebarList">
-        <li class="homepage" onclick="location.href='/homepage.html'">
-          Homepage
-        </li>
+        <li class="homepage" onclick="location.href='/homepage.html'">Homepage</li>
         <li class="income" onclick="location.href='/income.html'">Income</li>
         <li class="expenses" onclick="location.href='/expense.html'">
           Expense
@@ -32,7 +31,6 @@
           Saving Goal
         </li>
         <li class="social" onclick="location.href= '/social.html'">Social</li>
-        <li class="compare">Compare with friend</li>
         <li class="subscribe">Subscription</li>
         <li class="sign-out" onclick="location.href= '/index.html'">
           Sign out
@@ -50,7 +48,7 @@
             <input placeholder="Income Name" type="text" required />
           </div>
           <div>
-            <input placeholder="Income Amount" type="number" step="0.01" required />
+            <input placeholder="Income Amount" type="number" step="0.01" required min="0" />
           </div>
           <div>
             <label for="date">Date</label>
@@ -60,9 +58,11 @@
             <button type="submit">Send</button>
           </div>
         </form>
+        <div id="table-div"></div>
       </div>
     </div>
-    <script src="/js/income.js"></script>
+    <footer><span id="about">About us</span><span id="eeesa">EeesSa Solutions</span></footer>
+    <script type = "module" src="/js/income.js"></script>
   </main>
 </body>
 

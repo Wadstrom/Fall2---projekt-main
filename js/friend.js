@@ -1,4 +1,15 @@
-import cookieUserID from "./cookiecutter.js";
+import generateTable from "./tableGenerator.js";
+import {GetUserByIdPromise} from "./fetches.js"
+var email;
+var firstname;
+var lastname;
+
+
+GetyUserByIdPromise().then((result) => {
+  email = result.Email;
+  firstname = result.FirstName;
+  lastname = result.LastName;
+})()
 
 forms.onsubmit = (e) => {
   e.preventDefault();
@@ -6,6 +17,9 @@ forms.onsubmit = (e) => {
 
   let requestObject = {
     From_ID: cookieUserID,
+    From_Email: email,
+    From_Firstname: firstname,
+    From_Lastname: lastname,
     To_Email: e.target[0].value,
     Status: "Pending",
   };
@@ -25,8 +39,7 @@ const getPendingFriend = () => {
       return response.json();
     })
     .then((data) => {
-      console.log(data);
+      generateTable(data);
     });
 };
-
 getPendingFriend();
