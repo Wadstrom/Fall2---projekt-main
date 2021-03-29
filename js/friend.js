@@ -1,24 +1,15 @@
-import cookieUserID from "./cookiecutter.js";
 import generateTable from "./tableGenerator.js";
-
+import {GetUserByIdPromise} from "./fetches.js"
 var email;
 var firstname;
 var lastname;
 
-const GetNameByUserIdPromise = () => {
-  return fetch("https://localhost:44357/api/user/" + cookieUserID)
-    .then((response) => {
-      return response.json();
-    })
-    .then((data) => {
-      return data;
-    });
-};
-GetNameByUserIdPromise().then((result) => {
+
+GetyUserByIdPromise().then((result) => {
   email = result.Email;
   firstname = result.FirstName;
   lastname = result.LastName;
-});
+})()
 
 forms.onsubmit = (e) => {
   e.preventDefault();

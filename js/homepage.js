@@ -1,14 +1,6 @@
 import cookieUserID from "./cookiecutter.js";
+import {GetNameByUserIdPromise} from "./fetches.js";
 
-const GetNameByUserIdPromise = () => {
-  return fetch("https://localhost:44357/api/user/" + cookieUserID)
-    .then((response) => {
-      return response.json();
-    })
-    .then((data) => {
-      return data.FirstName;
-    });
-};
 
 function welcomeMessage() {
   if (cookieUserID != "") {
