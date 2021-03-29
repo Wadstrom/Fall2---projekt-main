@@ -2,6 +2,7 @@ import {filterCurrentMonthYear, calculateBudgets} from "./workhorse.js";
 import {GetBudgetsByUserIdPromise, GetExpensesByUserIdPromise} from "./fetches.js";
 import generateTable from "./tableGenerator.js"
 
+
 async function calculateBudgetsAndExpense(){
 let budgetsUnfilterd  = await GetBudgetsByUserIdPromise();
 let expensesUnfilterd = await GetExpensesByUserIdPromise();
@@ -15,6 +16,3 @@ calculateBudgetsAndExpense().then((result)=>{
   generateTable([result[1]],"budget")
   generateTable([result[2]],"expense")
 })
-
-
-
