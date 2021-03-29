@@ -106,3 +106,8 @@ footer{
   display:flex;
   justify-content: space-between;
 }
+
+#ErrorMessage{
+  visibility: hidden;
+  color: red;
+}

@@ -1,58 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="stylesheet" type="text/css" href="css/site-skeleton.css" />
+      <link rel="stylesheet" href="/css/homepage.css" />
+      <link rel="stylesheet" href="css/table.css"
+      <title>DinBudget</title>
+    </head>
+  
+  <body>
+      <main>
+        <div class="logoHeader">B.I.M</div>
+        <div class="textHeader">
+          <h1>Homepage</h1>
+        </div>
+        <div class="sidebar">
+          <ul class="sidebarList">
+            <li class="homepage" onclick="location.href='/homepage.html'">
+              Homepage
+            </li>
+            <li class="income" onclick="location.href='/income.html'">Income</li>
+            <li class="expenses" onclick="location.href='/expense.html'">
+              Expense
+            </li>
+            <li class="monthly-budget" onclick="location.href = '/monthly-budget.html'">
+              Monthly Budget
+            </li>
+            <li class="saving-goal" onclick="location.href = '/saving-goal.html'">
+              Saving Goal
+            </li>
+            <li class="social" onclick="location.href = '/social.html'">
+              Social
+            </li>
+            <li class="subscribe">Subscription</li>
+            <li class="sign-out" onclick="location.href= '/index.html'">
+              Sign out
+            </li>
+          </ul>
+        </div>
+      <div class="maincontent">
+          <div class="maincontentBox">
+              <div id="welcome"></div>
+              <div class="infoBudget">
+                <div class="flexbox" id="budget"
+              >Budgets of this month:</div>
+            
+                <div class="flexbox" id="expense">Expenses so far this month:</div>
+              <div class="flexbox" id="remaining">
+                Left in your budget this month:
+              
+        </div>
+      
+            </div>
+          </div>
+     </div>
+        <footer>
+          <span id="about">About us</span><span id="eeesa">EeesSa Solutions</span>
+      <
+/footer>
+    </main>
+  </body>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" type="text/css" href="css/site-skeleton.css" />
-  <link rel="stylesheet" href="/css/homepage.css" />
-  <title>DinBudget</title>
-</head>
-
-<body>
-  <main>
-    <div class="logoHeader">B.I.M</div>
-    <div class="textHeader">
-      <h1>Homepage</h1>
-    </div>
-    <div class="sidebar">
-      <ul class="sidebarList">
-        <li class="homepage" onclick="location.href='/homepage.html'">
-          Homepage
-        </li>
-        <li class="income" onclick="location.href='/income.html'">Income</li>
-        <li class="expenses" onclick="location.href='/expense.html'">
-          Expense
-        </li>
-        <li class="monthly-budget" onclick="location.href = '/monthly-budget.html'">
-          Monthly Budget
-        </li>
-        <li class="saving-goal" onclick="location.href = '/saving-goal.html'">
-          Saving Goal
-        </li>
-        <li class="social" onclick="location.href = '/social.html'">
-          Social
-        </li>
-        <li class="subscribe">Subscription</li>
-        <li class="sign-out" onclick="location.href= '/index.html'">
-          Sign out
-        </li>
-      </ul>
-    </div>
-    <div class="maincontent">
-      <div class="maincontentBox">
-        <h1 id="welcome">hej</h1>
-        <div class=infoBudget>
-        <div class="flexbox" id="budget">Budgets of this month:</div>
-        <div class="flexbox" id="expense">Expenses so far this month:</div>
-        <div class="flexbox" id="remaining">Left in your budget this month:</div>
-      </div>
-      </div>
-    </div>
-    <footer><span id="about">About us</span><span id="eeesa">EeesSa Solutions</span></footer>
-  </main>
-</body>
- 
-<script type="module" src="js/calculate.js"></script>
-<script type="module" src="js/homepage.js"></script>
+  <script type="module" src="js/calculate.js"></script>
+  <script type="module" src="js/homepage.js"></script>
 </html>

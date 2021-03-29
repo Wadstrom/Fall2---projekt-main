@@ -1,19 +1,5 @@
-function getCookie(cname) {
-  var name = cname + "=";
-  var decodedCookie = decodeURIComponent(document.cookie);
-  var ca = decodedCookie.split(";");
-  for (var i = 0; i < ca.length; i++) {
-    var c = ca[i];
-    while (c.charAt(0) == " ") {
-      c = c.substring(1);
-    }
-    if (c.indexOf(name) == 0) {
-      return c.substring(name.length, c.length);
-    }
-  }
-  return "";
-}
-var cookieUserID = getCookie("User");
+import cookieUserID from "./cookiecutter.js";
+import generateTable from "./tableGenerator.js";
 
 forms.onsubmit = (e) => {
   e.preventDefault();
@@ -23,7 +9,7 @@ forms.onsubmit = (e) => {
     Amount: e.target[0].value,
     StartDate: e.target[1].value,
     ReachDate: e.target[2].value,
-    GoalName: e.target[3].value,
+    Name: e.target[3].value,
     UserID: cookieUserID,
   };
 
@@ -42,50 +28,31 @@ const getSavingData = () => {
       return response.json();
     })
     .then((data) => {
-      let output = ` <tr id="savingTableData">
-      <th>Goal Name:</th>   
-            <th>Amount:</th>
-            <th>Start Date:</th>
-            <th>Reach Date:</th>
-             
-            <th>Save each day:</th>
-            <th>Save each month:</th>
-            <th>User ID:</th>
-        </tr>`;
-      data.forEach(function (savinggoal) {
-        //för att räkna ut dagar/månader -------------------------------------------------------------------------
-        var msSpan =
-          new Date(savinggoal.ReachDate) - new Date(savinggoal.StartDate);
-        var daySpan = msSpan / (1000 * 60 * 60 * 24); //(ms * minut * h * dag)
-        console.log(msSpan, "ms");
-        console.log(daySpan, "dagar");
-        var saveEveryDay = savinggoal.Amount / daySpan;
-        var saveEveryMonth = savinggoal.Amount / (daySpan / 30);
+      data.forEach(function (obj) {
+        //calculating days/months to save -------------------------------------------------------------------------
+        var msSpan = new Date(obj.ReachDate) - new Date(obj.StartDate);
+        var daySpan = msSpan / (1000 * 60 * 60 * 24); //(1000ms * 60minut * 60h * 24dag)
+        var saveEveryDay = obj.Amount / daySpan;
+        var saveEveryMonth = obj.Amount / (daySpan / 30);
         if (daySpan <= 31) {
           saveEveryMonth = "";
         } else {
           saveEveryMonth = saveEveryMonth.toFixed(2);
         }
-
-        console.log(saveEveryMonth, "/månad");
-        console.log(saveEveryDay, "/dag");
-        //räknar till hit ------------------------------------------------------------------------------------------
-
-        // += betyder Append och `` betyder "template-strings där vi kan ha en massor html"
-        output += `
-                <tr>
-                <td>${savinggoal.GoalName}</td>
-                <td>${savinggoal.Amount}</td>            
-                <td>${new Date(savinggoal.StartDate).toDateString()}</td>
-                <td>${new Date(savinggoal.ReachDate).toDateString()}</td>  
-             
-                <td>${saveEveryDay.toFixed(2)}</td>
-                <td>${saveEveryMonth}</td>
-                <td>${savinggoal.UserID}</td>
-            </tr>
-                `;
+        //counting to here ------------------------------------------------------------------------------------------
+        //Formatting date
+        obj.StartDate = obj.StartDate.slice(0, 10);
+        obj.ReachDate = obj.ReachDate.slice(0, 10);
+        //Renaming obj key
+        obj["Start Date"] = obj["StartDate"];
+        obj["Reach Date"] = obj["StartDate"];
+        delete obj["StartDate"];
+        delete obj["ReachDate"];
+        //adding new obj key and value to object
+        obj["Save every day"] = saveEveryDay.toFixed(2);
+        obj["Save every month"] = saveEveryMonth;
       });
-
-      document.getElementById("savingTable").innerHTML = output;
+      generateTable(data, "table-div");
     });
 };
+getSavingData();

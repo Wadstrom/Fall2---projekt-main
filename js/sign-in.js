@@ -1,45 +1,36 @@
+let UserID;
 
-const FunnyArray = [
-    'HA-HA Wrong!',
-    'Pass wrong.. or maybe.. maybe mail..',
-    'Come on! Wrong Mail or Pass',
-    'You shall not pass!!'
-]
+loginForm.onsubmit = (e) => {
+  e.preventDefault();
+  console.log(e);
 
+  let requestObject = {
+    Email: e.target[0].value,
+    Password: e.target[1].value,
+  };
 
-let UserID 
+  fetch("https://localhost:44357/api/Login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(requestObject),
+  })
+    .then((Response) => Response.json())
+    .then((result) => {
+      console.log(result);
+      if (result.Status != "Invalid") {
+        UserID = result.UserID;
+        console.log(UserID);
+        setCookie("User", UserID);
+        window.location.href = "homepage.html";
+      } else {
 
-loginForm.onsubmit= (e) => {
-    e.preventDefault()
-    console.log(e)
-
-    let requestObject = {
-        Email: e.target[0].value,
-        Password: e.target[1].value,
-      
-    }
-
-    fetch('https://localhost:44357/api/Login', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(requestObject),  
-    }).then((Response) => Response.json())
-             .then((result) => {  
-                 console.log(result);  
-                 if (result.Status != 'Invalid'){
-                     UserID = result.UserID
-                     console.log(UserID)
-                     setCookie("User", UserID)
-                     window.location.href = 'homepage.html';
-                 }
-                 else {
-                     document.getElementById("failedLogIn").innerHTML = FunnyArray[Math.floor(Math.random() * FunnyArray.length)]
-                   
-                 }
-                })
-                function setCookie(cname, cvalue) {     
-                    document.cookie = cname + "=" + cvalue + ";" + ";path=/";
-                  }
-    }
+        document.getElementById("ErrorMessage").style.visibility = "Visible"
+       
+      }
+    });
+  function setCookie(cname, cvalue) {
+    document.cookie = cname + "=" + cvalue + ";" + ";path=/";
+  }
+};

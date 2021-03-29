@@ -1,30 +1,15 @@
-function getCookie(cname) {
-  var name = cname + "=";
-  var decodedCookie = decodeURIComponent(document.cookie);
-  var ca = decodedCookie.split(";");
-  for (var i = 0; i < ca.length; i++) {
-    var c = ca[i];
-    while (c.charAt(0) == " ") {
-      c = c.substring(1);
-    }
-    if (c.indexOf(name) == 0) {
-      return c.substring(name.length, c.length);
-    }
-  }
-  return "";
-}
-
-var cookie = getCookie("User")
+import cookieUserID from "./cookiecutter.js";
+import generateTable from "./tableGenerator.js";
 
 forms.onsubmit = (e) => {
   e.preventDefault();
   console.log(e);
 
   let requestObject = {
-    IncomeName: e.target[0].value,
-    IncomeAmount: e.target[1].value,
-    TransactionDate: e.target[2].value,
-    UserId: cookie
+    Name: e.target[0].value,
+    Amount: e.target[1].value,
+    Date: e.target[2].value,
+    UserID: cookieUserID,
   };
 
   fetch("https://localhost:44357/api/Income", {
@@ -35,3 +20,17 @@ forms.onsubmit = (e) => {
     body: JSON.stringify(requestObject),
   });
 };
+//GET
+const GetIncomeByUserID = () => {
+  fetch("https://localhost:44357/api/Income/" + cookieUserID)
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      data.forEach((item) => {
+        item.Date = item.Date.slice(0, 10);
+      });
+      generateTable(data, "table-div");
+    });
+};
+GetIncomeByUserID();
