@@ -9,6 +9,6 @@ export const getDataByName = (name) => {
             return response.json();
         })
         .then((data) => { return data })
-};
+}; 
 
 
