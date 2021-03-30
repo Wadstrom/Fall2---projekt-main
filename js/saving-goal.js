@@ -1,5 +1,6 @@
 import cookieUserID from "./cookiecutter.js";
 import generateTable from "./tableGenerator.js";
+import { getDataByName } from "./fetches.js";
 
 forms.onsubmit = (e) => {
   e.preventDefault();
@@ -22,12 +23,7 @@ forms.onsubmit = (e) => {
   });
 };
 
-const getSavingData = () => {
-  fetch("https://localhost:44357/api/savinggoal/" + cookieUserID)
-    .then((response) => {
-      return response.json();
-    })
-    .then((data) => {
+getDataByName("savinggoal").then((data) => {
       data.forEach(function (obj) {
         //calculating days/months to save -------------------------------------------------------------------------
         var msSpan = new Date(obj.ReachDate) - new Date(obj.StartDate);
@@ -52,7 +48,6 @@ const getSavingData = () => {
         obj["Save every day"] = saveEveryDay.toFixed(2);
         obj["Save every month"] = saveEveryMonth;
       });
-      generateTable(data, "table-div");
-    });
-};
-getSavingData();
+    generateTable(data, "table-div");
+    })
+

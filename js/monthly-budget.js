@@ -1,5 +1,6 @@
 import cookieUserID from "./cookiecutter.js";
 import generateTable from "./tableGenerator.js";
+import { getDataByName } from "./fetches.js";
 
 forms.onsubmit = (e) => {
   e.preventDefault();
@@ -18,17 +19,19 @@ forms.onsubmit = (e) => {
     body: JSON.stringify(requestObject),
   });
 };
-const getBudgetData = () => {
-  fetch("https://localhost:44357/api/budget/" + cookieUserID)
-    .then((response) => {
-      return response.json();
-    })
-    .then((data) => {
-      //om vi vill sätta date här...
-      data.forEach((item) => {
-        item.Date = item.Date.slice(0, 10);
-      });
-      generateTable(data, "table-div");
-    });
-};
-getBudgetData();
+
+
+
+// GetBudgetsByUserIdPromise().then((data) => {
+//   data.forEach((item) => {
+//     item.Date = item.Date.slice(0, 10);
+//   });
+//   generateTable(data, "table-div");
+// });
+
+getDataByName("budget").then((data) => {
+  data.forEach((item) => {
+    item.Date = item.Date.slice(0, 10);
+  });
+  generateTable(data, "table-div");
+});

@@ -33,7 +33,7 @@ const generateTable = (data, tableDiv) => {
         th.appendChild(headerText);
         row.appendChild(th);
         //else write out all td
-      } else {
+      } else{
         var td = document.createElement("td");
         var cellText = document.createTextNode(objValue[c]);
         td.appendChild(cellText);

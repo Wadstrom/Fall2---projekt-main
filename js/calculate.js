@@ -1,11 +1,11 @@
 import {filterCurrentMonthYear, calculateBudgets} from "./workhorse.js";
-import {GetBudgetsByUserIdPromise, GetExpensesByUserIdPromise} from "./fetches.js";
+import {getDataByName} from "./fetches.js";
 import generateTable from "./tableGenerator.js"
 
 
 async function calculateBudgetsAndExpense(){
-let budgetsUnfilterd  = await GetBudgetsByUserIdPromise();
-let expensesUnfilterd = await GetExpensesByUserIdPromise();
+let budgetsUnfilterd  = await getDataByName("budget");
+let expensesUnfilterd = await getDataByName("Expense");
 let budgetsFilterd =  await filterCurrentMonthYear(budgetsUnfilterd);
 let expensesFilterd = await  filterCurrentMonthYear(expensesUnfilterd);
 let result = calculateBudgets(budgetsFilterd, expensesFilterd); 

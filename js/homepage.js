@@ -1,10 +1,13 @@
 import cookieUserID from "./cookiecutter.js";
-import {GetNameByUserIdPromise} from "./fetches.js";
+import { getDataByName} from "./fetches.js";
 
 
 function welcomeMessage() {
   if (cookieUserID != "") {
-    GetNameByUserIdPromise().then((result) => {
+    getDataByName("user").then((data) => {
+      return data.FirstName;
+    })
+    .then((result) => {
       var welcomeText = document.createElement("h1");
       welcomeText.appendChild(document.createTextNode("Welcome " + result));
       document.getElementById("welcome").appendChild(welcomeText);
