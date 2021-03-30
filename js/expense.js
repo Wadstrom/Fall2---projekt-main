@@ -1,5 +1,8 @@
 import cookieUserID from "./cookiecutter.js";
 import generateTable from "./tableGenerator.js";
+import { getDataByName } from "./fetches.js";
+
+
 forms.onsubmit = (e) => {
   e.preventDefault();
   console.log(e);
@@ -21,17 +24,12 @@ forms.onsubmit = (e) => {
   });
 };
 
-const getExpenseData = () => {
-  fetch(`https://localhost:44357/api/expense/${cookieUserID}/`)
-    .then((response) => {
-      return response.json();
-    })
-    .then((data) => {
-      data.forEach((item) => {
-        item.Date = item.Date.slice(0, 10);
-      });
-      generateTable(data, "table-div");
-    });
-};
 
-getExpenseData();
+
+getDataByName("Expense").then((data) => {
+  data.forEach((item) => {
+    item.Date = item.Date.slice(0, 10);
+  });
+  generateTable(data, "table-div");
+});
+

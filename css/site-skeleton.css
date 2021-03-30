@@ -13,7 +13,7 @@ main {
   height: 100vh;
   display: grid;
   grid-template-columns: 225px 1fr;
-  grid-template-rows: 120px 1fr;
+  grid-template-rows: 120px 1fr 25px;
 }
 .logoHeader {
   font-size: 1.5rem;
@@ -39,7 +39,7 @@ main {
 .sidebar {
   padding-top: 30px;
   background: #92a7d6;
-  grid-row: 2/3;
+  grid-row: 2/4;
   grid-column: 1/2;
   display: flex;
   justify-content: center;
@@ -83,4 +83,9 @@ a {
   min-height: calc(100% - 70px);
   border-radius: 20px;
   overflow: auto;
+}
+
+footer{
+  grid-row: 3/4;
+  grid-column: 1/2;
 }
