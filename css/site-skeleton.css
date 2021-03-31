@@ -90,4 +90,9 @@ footer{
   grid-column: 1/2;
 }
 
-
+.deleteButton:hover{
+  cursor: pointer;
+}
+.deleteButton{
+  width: 10px;
+}
