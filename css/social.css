@@ -1,8 +1,8 @@
 .sidebarList > .social {
     background-color: #7d92c5;
-    
-  }
-  footer{
+}
+
+footer{
     display:flex;
     justify-content: space-between;
-  }
+}
