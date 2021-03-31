@@ -66,8 +66,8 @@ const generateTableWithBtn = (data, tableDiv) => {
             else if(c === objKey.length  + 1){
                 var td2 = document.createElement("td");
                 var a = document.createElement('p');
-                var btnName = document.createTextNode("🗑");
-                a.className = "deleteButton"
+                var btnName = document.createTextNode("✎");
+                a.className = "editButton"
                 a.appendChild(btnName)
                 td2.appendChild(a)
                 row.appendChild(td2)
