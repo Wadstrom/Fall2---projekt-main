@@ -28,6 +28,9 @@ forms.onsubmit = (e) => {
 getDataByName("Income").then((data) => {
   data.forEach((item) => {
     item.Date = item.Date.slice(0, 10);
+
+    item["Delete"] = item.ID
+    item["Edit"] = item.ID
   });
   generateTable(data, "table-div");
 });

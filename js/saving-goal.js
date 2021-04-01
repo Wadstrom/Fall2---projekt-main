@@ -1,5 +1,5 @@
 import cookieUserID from "./cookiecutter.js";
-import generateTableWithBtn from "./tableGeneratorWithBtn.js";
+import generateTable from "./tableGenerator.js";
 import { getDataByName } from "./fetches.js";
 
 forms.onsubmit = (e) => {
@@ -47,6 +47,9 @@ getDataByName("savinggoal").then((data) => {
         //adding new obj key and value to object
         obj["Save every day"] = saveEveryDay.toFixed(2);
         obj["Save every month"] = saveEveryMonth;
+        
+        obj["Delete"] = obj.ID
+        obj["Edit"] = obj.ID
       });
-  generateTableWithBtn(data, "table-div");
+  generateTable(data, "table-div");
     })

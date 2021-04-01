@@ -16,6 +16,8 @@ const generateTable = (data, tableDiv) => {
   console.log(objKey);
   //copying and adding the first data object to beginning
 
+  
+
   // ROWS (one row = r) creating a row until data.length is reached
   for (var r = 0; r < data.length; r++) {
     var row = document.createElement("tr");
@@ -33,7 +35,28 @@ const generateTable = (data, tableDiv) => {
         th.appendChild(headerText);
         row.appendChild(th);
         //else write out all td
-      } else{
+      } 
+      //IF objKey contains data with name "Delete" then create TrashcanButton!
+      else if (objKey[c] == "Delete") {
+        var td = document.createElement("td");
+        var pTag = document.createElement('p');
+        var btnName = document.createTextNode("🗑");
+        pTag.className = "deleteButton"
+        pTag.appendChild(btnName)
+        td.appendChild(pTag)
+        row.appendChild(td)
+      }
+      //IF objKey contains data with name "Edit" then create EditButton!
+      else if (objKey[c] == "Edit") {
+        var td = document.createElement("td");
+        var pTag = document.createElement('p');
+        var btnName = document.createTextNode("✎");
+        pTag.className = "editButton"
+        pTag.appendChild(btnName)
+        td.appendChild(pTag)
+        row.appendChild(td)
+
+      }else{
         var td = document.createElement("td");
         var cellText = document.createTextNode(objValue[c]);
         td.appendChild(cellText);
