@@ -1,5 +1,6 @@
+import { deleteByID } from "./fetches.js";
 //-----------------------------------------
-const generateTable = (data, tableDiv) => {
+const generateTable = (data, tableDiv, model) => {
   console.log("data: ");
   console.log(data);
   // get the reference for the body
@@ -38,13 +39,23 @@ const generateTable = (data, tableDiv) => {
       } 
       //IF objKey contains data with name "Delete" then create TrashcanButton!
       else if (objKey[c] == "Delete") {
+        console.log("Våran Objkey: ", objValue[c]);
+        var objc = objValue[c]
         var td = document.createElement("td");
         var pTag = document.createElement('p');
         var btnName = document.createTextNode("🗑");
+
         pTag.className = "deleteButton"
         pTag.appendChild(btnName)
         td.appendChild(pTag)
         row.appendChild(td)
+        
+        pTag.addEventListener("click", () => {
+            deleteByID(model,objc)
+            console.log(model, objc);
+            tbl.deleteRow(r-1)
+            
+        })
       }
       //IF objKey contains data with name "Edit" then create EditButton!
       else if (objKey[c] == "Edit") {

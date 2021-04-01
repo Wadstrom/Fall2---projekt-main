@@ -33,6 +33,6 @@ getDataByName("Expense").then((data) => {
     item["Edit"] = item.ID
   });
  
-  generateTable(data, "table-div");
+  generateTable(data, "table-div", "Expense");
 });
 

@@ -51,5 +51,5 @@ getDataByName("savinggoal").then((data) => {
         obj["Delete"] = obj.ID
         obj["Edit"] = obj.ID
       });
-  generateTable(data, "table-div");
+  generateTable(data, "table-div", "savinggoal");
     })
