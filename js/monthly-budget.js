@@ -32,6 +32,8 @@ forms.onsubmit = (e) => {
 getDataByName("budget").then((data) => {
   data.forEach((item) => {
     item.Date = item.Date.slice(0, 10);
+    item["Delete"] = item.ID
+    item["Edit"] = item.ID
   });
   generateTable(data, "table-div");
 });
