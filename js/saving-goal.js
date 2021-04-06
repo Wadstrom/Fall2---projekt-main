@@ -41,15 +41,15 @@ getDataByName("savinggoal").then((data) => {
         obj.ReachDate = obj.ReachDate.slice(0, 10);
         //Renaming obj key
         obj["Start Date"] = obj["StartDate"];
-        obj["Reach Date"] = obj["StartDate"];
+        obj["Reach Date"] = obj["ReachDate"];
         delete obj["StartDate"];
         delete obj["ReachDate"];
         //adding new obj key and value to object
         obj["Save every day"] = saveEveryDay.toFixed(2);
         obj["Save every month"] = saveEveryMonth;
         
-        obj["Delete"] = obj.ID
-        obj["Edit"] = obj.ID
+        // obj["Delete"] = obj.ID
+        // obj["Edit"] = obj.ID
       });
   generateTable(data, "table-div", "savinggoal");
     })
