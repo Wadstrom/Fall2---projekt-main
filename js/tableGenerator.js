@@ -1,4 +1,5 @@
 import { deleteByID } from "./fetches.js";
+import popup from "./popup.js";
 //-----------------------------------------
 const generateTable = (data, tableDiv, model) => {
   console.log("data: ");
@@ -66,6 +67,9 @@ const generateTable = (data, tableDiv, model) => {
         pTag.appendChild(btnName)
         td.appendChild(pTag)
         row.appendChild(td)
+        pTag.addEventListener('click', () => {
+          popup()
+        })
 
       }else{
         var td = document.createElement("td");

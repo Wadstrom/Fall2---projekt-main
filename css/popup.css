@@ -10,6 +10,11 @@
     opacity: 0;
   }
   
+  .b{
+    visibility: visible;
+    background: rgba(18, 18, 19, 0.7);
+  }
+
   .overlay:target {
     visibility: visible;
     opacity: 1;
@@ -22,6 +27,7 @@
     border-radius: 5px;
     width: 40%;
     position: relative;
+    z-index: 1;
   }
   
   .popup h1 {
