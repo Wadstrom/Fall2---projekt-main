@@ -48,8 +48,8 @@ getDataByName("savinggoal").then((data) => {
         obj["Save every day"] = saveEveryDay.toFixed(2);
         obj["Save every month"] = saveEveryMonth;
         
-        // obj["Delete"] = obj.ID
-        // obj["Edit"] = obj.ID
+         obj["Delete"] = obj.ID
+         obj["Edit"] = obj.ID
       });
   generateTable(data, "table-div", "savinggoal");
     })
