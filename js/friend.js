@@ -1,6 +1,6 @@
 import generateTable from "./tableGenerator.js";
 import cookieUserID from "./cookiecutter.js"
-
+import { getDataByName } from "./fetches.js"
 
 
 forms.onsubmit = (e) => {
@@ -8,8 +8,8 @@ forms.onsubmit = (e) => {
   console.log(e);
 
   let requestObject = {
-    From_ID: cookieUserID,
-    To_Email: e.target[0].value,
+    ID: cookieUserID,
+    Email: e.target[0].value
   };
 
   fetch("https://localhost:44357/api/friend", {
@@ -21,13 +21,14 @@ forms.onsubmit = (e) => {
   });
 };
 
-const getPendingFriend = () => {
-  fetch("https://localhost:44357/api/friend/" + cookieUserID)
-    .then((response) => {
-      return response.json();
-    })
-    .then((data) => {
-      generateTable(data);
-    });
-};
-//getPendingFriend();
+getDataByName("Friend").then((data) => {
+  generateTable(data, "friendtable");
+});
+
+getDataByName("Expense").then((data) => {
+  data.forEach((item) => {
+    item.Date = item.Date.slice(0, 10);
+  });
+  generateTable(data, "table-div");
+});
+
