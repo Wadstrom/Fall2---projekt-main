@@ -25,10 +25,4 @@ getDataByName("Friend").then((data) => {
   generateTable(data, "friendtable");
 });
 
-getDataByName("Expense").then((data) => {
-  data.forEach((item) => {
-    item.Date = item.Date.slice(0, 10);
-  });
-  generateTable(data, "table-div");
-});
 
