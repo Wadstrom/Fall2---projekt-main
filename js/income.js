@@ -30,7 +30,7 @@ getDataByName("Income").then((data) => {
     item.Date = item.Date.slice(0, 10);
 
     item["Delete"] = item.ID
-    item["Edit"] = item.ID
+    item["Edit"] = item
   });
   generateTable(data, "table-div", "Income");
 });

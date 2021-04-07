@@ -40,38 +40,39 @@ const generateTable = (data, tableDiv, model) => {
       } 
       //IF objKey contains data with name "Delete" then create TrashcanButton!
       else if (objKey[c] == "Delete") {
-        console.log("Våran Objkey: ", objValue[c]);
-        var objc = objValue[c]
+        console.log(objValue);
+        
+        
         var td = document.createElement("td");
         var pTag = document.createElement('p');
+        
         var btnName = document.createTextNode("🗑");
-
+        pTag.value = objValue[c]
+        console.log(btnName.value);
         pTag.className = "deleteButton"
         pTag.appendChild(btnName)
         td.appendChild(pTag)
         row.appendChild(td)
+
+        
         
 
-        pTag.addEventListener("click", () => {
-            deleteByID(model,objc)
-            console.log(model, objc);
-            tbl.deleteRow(r-1)
-            
-        })
+        
       }
       //IF objKey contains data with name "Edit" then create EditButton!
       else if (objKey[c] == "Edit") {
+        
         var td = document.createElement("td");
         var pTag = document.createElement('p');
+        pTag.value = objValue
         var btnName = document.createTextNode("✎");
         pTag.className = "editButton"
         pTag.appendChild(btnName)
         td.appendChild(pTag)
         row.appendChild(td)
         
-        pTag.addEventListener('click', () => {
-          popup(objValue, objKey)
-        })
+        
+    
 
       }else{
         var td = document.createElement("td");
@@ -88,5 +89,25 @@ const generateTable = (data, tableDiv, model) => {
   tbl.appendChild(tblBody);
   // append table into our table-div
   tableDiv.appendChild(tbl);
+
+  document.addEventListener("click", (e) => {
+    console.log(e.target.className);
+    if(e.target.className === "deleteButton"){
+      const id = e.target.value
+      // deleteByID(model, id)
+      console.log(model, id);
+      e.target.parentNode.parentNode.remove()
+    } else if (e.target.className === "editButton"){
+        const data = e.target.value
+        console.log(data);
+      popup(data)
+    }
+    
+
+  })
+  
 };
+
+
+
 export default generateTable;

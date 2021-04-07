@@ -20,6 +20,7 @@
   .popup {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     align-items: center;
     margin: 70px auto;
     padding: 20px;
@@ -44,7 +45,7 @@
   
   .popup .close {
     position: absolute;
-    
+    top: 10px;
     right: 30px;
     font-size: 30px;
     font-weight: bold;

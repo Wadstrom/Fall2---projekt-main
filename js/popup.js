@@ -1,4 +1,4 @@
-const popup = (objValue, objKey) => {
+const popup = (objValue) => {
     //Get overlay container
     const overlayContainer = document.getElementById('overlay-container')
     //create overlay
@@ -21,13 +21,13 @@ const popup = (objValue, objKey) => {
     
   
     
-  for (var c = 0; c < objKey.length-2; c++){
+  for (var c = 0; c < objValue.length -3; c++){
     //create inputs in popup
     const input = document.createElement('input')
     input.className = 'input1'
     input.value = objValue[c]
     popup.appendChild(input)
-    console.log("Våra obj" + objValue, objKey);
+    console.log( objValue);
   }
 
     //Closing down popup
