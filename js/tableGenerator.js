@@ -94,7 +94,7 @@ const generateTable = (data, tableDiv, model) => {
     console.log(e.target.className);
     if(e.target.className === "deleteButton"){
       const id = e.target.value
-      // deleteByID(model, id)
+      deleteByID(model, id)
       console.log(model, id);
       e.target.parentNode.parentNode.remove()
     } else if (e.target.className === "editButton"){
