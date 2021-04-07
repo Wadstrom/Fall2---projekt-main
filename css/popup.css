@@ -5,15 +5,12 @@
     left: 0;
     right: 0;
     background: rgba(125, 146, 197, 0.7);
-    transition: opacity 1000ms;
+    transition: all 400ms ease-in-out;
     visibility: hidden;
-    opacity: 0;
+    opacity: 1;
   }
-  
-  .b{
-    visibility: visible;
-    background: rgba(18, 18, 19, 0.7);
-  }
+
+
 
   .overlay:target {
     visibility: visible;
@@ -21,6 +18,9 @@
   }
   
   .popup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 70px auto;
     padding: 20px;
     background: #fff;
@@ -28,6 +28,12 @@
     width: 40%;
     position: relative;
     z-index: 1;
+  }
+
+  .popupb {
+    top: 50%;
+    width: 80%;
+   
   }
   
   .popup h1 {
@@ -38,14 +44,15 @@
   
   .popup .close {
     position: absolute;
-    top: 20px;
+    
     right: 30px;
     font-size: 30px;
     font-weight: bold;
     text-decoration: none;
     color: #333;
   }
-  
+
+
   .popup .close:hover {
     color: #7d92c5;
   }

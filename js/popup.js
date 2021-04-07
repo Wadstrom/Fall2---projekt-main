@@ -1,13 +1,50 @@
-const popup = () => {
-    const overlay = document.getElementById('popup2')
-    overlay.className = 'overlay b'
+const popup = (objValue, objKey) => {
+    //Get overlay container
+    const overlayContainer = document.getElementById('overlay-container')
+    //create overlay
+    const overlay = document.createElement('div')
+    overlay.className = 'overlay'
+    overlayContainer.appendChild(overlay)
+    overlay.style.visibility = "visible"
+    
+    //create popup 
     const popup = document.createElement('div')
-    popup.className = 'popup'
+    popup.className = 'popup popupb'
     overlay.appendChild(popup)
 
-    const input1 = document.createElement('input')
-    input1.className = 'input1'
-    popup.appendChild(input1)
+    //creating X button for closeDown popup
+    const close = document.createElement('p')
+    close.className = "close"
+    const x = document.createTextNode("×")
+    close.appendChild(x)
+    popup.appendChild(close)
+    
+  
+    
+  for (var c = 0; c < objKey.length-2; c++){
+    //create inputs in popup
+    const input = document.createElement('input')
+    input.className = 'input1'
+    input.value = objValue[c]
+    popup.appendChild(input)
+    console.log("Våra obj" + objValue, objKey);
+  }
+
+    //Closing down popup
+    close.addEventListener('click', () =>{
+      console.log("funkar");
+      if(overlay.className === 'overlay'){
+        overlay.style.visibility = "hidden"
+        
+        overlay.remove()
+      }
+    })
+
+    window.onclick = function (event) {
+      if (event.target == overlay) {
+        overlay.remove();
+      }
+    };
     
 }
 

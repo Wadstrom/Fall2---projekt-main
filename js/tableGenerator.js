@@ -51,6 +51,7 @@ const generateTable = (data, tableDiv, model) => {
         td.appendChild(pTag)
         row.appendChild(td)
         
+
         pTag.addEventListener("click", () => {
             deleteByID(model,objc)
             console.log(model, objc);
@@ -67,8 +68,9 @@ const generateTable = (data, tableDiv, model) => {
         pTag.appendChild(btnName)
         td.appendChild(pTag)
         row.appendChild(td)
+        
         pTag.addEventListener('click', () => {
-          popup()
+          popup(objValue, objKey)
         })
 
       }else{
