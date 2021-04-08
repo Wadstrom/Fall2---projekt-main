@@ -18,8 +18,6 @@ const generateTable = (data, tableDiv, model) => {
   console.log(objKey);
   //copying and adding the first data object to beginning
 
-  
-
   // ROWS (one row = r) creating a row until data.length is reached
   for (var r = 0; r < data.length; r++) {
     var row = document.createElement("tr");
@@ -37,44 +35,34 @@ const generateTable = (data, tableDiv, model) => {
         th.appendChild(headerText);
         row.appendChild(th);
         //else write out all td
-      } 
+      }
       //IF objKey contains data with name "Delete" then create TrashcanButton!
       else if (objKey[c] == "Delete") {
         console.log(objValue);
-        
-        
+
         var td = document.createElement("td");
-        var pTag = document.createElement('p');
-        
+        var pTag = document.createElement("p");
         var btnName = document.createTextNode("🗑");
-        pTag.value = objValue[c]
-        console.log(btnName.value);
-        pTag.className = "deleteButton"
-        pTag.appendChild(btnName)
-        td.appendChild(pTag)
-        row.appendChild(td)
+        //giving value to it so we know what to delete. ObjValue[c] is the ID.
+        pTag.value = objValue[c];
 
-        
-        
-
-        
+        pTag.className = "deleteButton";
+        pTag.appendChild(btnName);
+        td.appendChild(pTag);
+        row.appendChild(td);
       }
       //IF objKey contains data with name "Edit" then create EditButton!
       else if (objKey[c] == "Edit") {
-        
         var td = document.createElement("td");
-        var pTag = document.createElement('p');
-        pTag.value = objValue
+        var pTag = document.createElement("p");
+      //giving value to p-tag so we know what to edit. ObjValue is all values of current row
+        pTag.value = objValue;
         var btnName = document.createTextNode("✎");
-        pTag.className = "editButton"
-        pTag.appendChild(btnName)
-        td.appendChild(pTag)
-        row.appendChild(td)
-        
-        
-    
-
-      }else{
+        pTag.className = "editButton";
+        pTag.appendChild(btnName);
+        td.appendChild(pTag);
+        row.appendChild(td);
+      } else {
         var td = document.createElement("td");
         var cellText = document.createTextNode(objValue[c]);
         td.appendChild(cellText);
@@ -83,31 +71,29 @@ const generateTable = (data, tableDiv, model) => {
     }
     // add the row to the end of the table body
     tblBody.appendChild(row);
-  } //end for row-forloop
+  }
+  //end of row-forloop ------------------------------------------------------------------
 
   // append tbody in the table
   tbl.appendChild(tblBody);
   // append table into our table-div
   tableDiv.appendChild(tbl);
 
+  //event listener for delete and edit
   document.addEventListener("click", (e) => {
-    console.log(e.target.className);
-    if(e.target.className === "deleteButton"){
-      const id = e.target.value
-      deleteByID(model, id)
-      console.log(model, id);
-      e.target.parentNode.parentNode.remove()
-    } else if (e.target.className === "editButton"){
-        const data = e.target.value
-        console.log(data);
-      popup(data)
+
+    if (e.target.className === "deleteButton") {
+      //e.target.value is the value of trashcan <p> that was defined in the for-loop (47)  
+      const id = e.target.value;
+      deleteByID(model, id);
+
+      e.target.parentNode.parentNode.remove();
+    } else if (e.target.className === "editButton") {
+      //e.target.value is the value of editpen <p> that was defined in the for-loop (59)  
+      const data = e.target.value;
+      popup(data);
     }
-    
-
-  })
-  
+  });
 };
-
-
 
 export default generateTable;

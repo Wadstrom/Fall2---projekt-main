@@ -2,7 +2,6 @@ import cookieUserID from "./cookiecutter.js";
 import generateTable from "./tableGenerator.js";
 import { getDataByName } from "./fetches.js";
 
-
 forms.onsubmit = (e) => {
   e.preventDefault();
   console.log(e);
@@ -24,15 +23,12 @@ forms.onsubmit = (e) => {
   });
 };
 
-
-
 getDataByName("Expense").then((data) => {
-  data.forEach((item) => {
-    item.Date = item.Date.slice(0, 10);
-    item["Delete"] = item.ID
-    item["Edit"] = item.ID
+  data.forEach((obj) => {
+    obj.Date = obj.Date.slice(0, 10);
+    obj["Delete"] = obj.ID;
+    obj["Edit"] = obj.ID;
   });
- 
+
   generateTable(data, "table-div", "Expense");
 });
-

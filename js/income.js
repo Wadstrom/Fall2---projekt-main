@@ -23,16 +23,12 @@ forms.onsubmit = (e) => {
 };
 //GET
 
-
-
 getDataByName("Income").then((data) => {
-  data.forEach((item) => {
-    item.Date = item.Date.slice(0, 10);
-
-    item["Delete"] = item.ID
-    item["Edit"] = item
+  data.forEach((obj) => {
+    obj.Date = obj.Date.slice(0, 10);
+    //delete and edit columns with the important value
+    obj["Delete"] = obj.ID;
+    obj["Edit"] = obj;
   });
   generateTable(data, "table-div", "Income");
 });
-
-
