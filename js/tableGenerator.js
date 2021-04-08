@@ -83,13 +83,13 @@ const generateTable = (data, tableDiv, model) => {
   document.addEventListener("click", (e) => {
 
     if (e.target.className === "deleteButton") {
-      //e.target.value is the value of trashcan <p> that was defined in the for-loop (47)  
+      //e.target.value is the value of (trashcan) <p> that was defined in the for-loop (46)  
       const id = e.target.value;
       deleteByID(model, id);
 
       e.target.parentNode.parentNode.remove();
     } else if (e.target.className === "editButton") {
-      //e.target.value is the value of editpen <p> that was defined in the for-loop (59)  
+      //e.target.value is the value of (editpen) <p> that was defined in the for-loop (58)  
       const data = e.target.value;
       popup(data);
     }
