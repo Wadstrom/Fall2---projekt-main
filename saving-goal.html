@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/css/saving-goal.css">
     <link rel="stylesheet" href="/css/forms.css">
     <link rel="stylesheet" href="/css/table.css">
+    <link rel="stylesheet" href="css/popup.css">
     <title>DinBudget</title>
 </head>
 
@@ -30,6 +31,7 @@
                     Sign out
                 </li>
             </ul>
+            
         </div>
         <div class="maincontent">
             <div class="maincontentBox">
@@ -57,11 +59,28 @@
                         </div>
                     </form>
                 </div>
-
-               <div id="table-div"></div>
-                <script type="module" src="/js/saving-goal.js"></script>
-    </main>
-    <footer><span id="about">About us</span><span id="eeesa">EeesSa Solutions</span></footer>
-</body>
-
+                <div id="table-div"></div>
+            </div>
+            <div id="overlay-container" ></div>
+        </div>
+               <footer>
+                   <div class="box">
+                       <a class="buttonPopup" href="#popup1">About us</a>
+                    </div>
+                    <div id="popup1" class="overlay">
+                        <div class="popup">
+                            <h1>About us</h1>
+                            <a class="close" href="#">&times;</a>
+                            <div class="content">
+                                <p>His palms are sweaty, knees weak, arms are heavy
+                                    There's vomit on his sweater already, mom's spaghetti.
+                                </p> 
+                            </div>
+                        </div>
+                    </div>
+                    <span>EeesSa Solutions</span>
+                </footer>
+            </main>
+        </body>
+        <script type="module" src="/js/saving-goal.js"></script>
 </html>

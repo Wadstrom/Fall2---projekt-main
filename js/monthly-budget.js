@@ -20,8 +20,6 @@ forms.onsubmit = (e) => {
   });
 };
 
-
-
 // GetBudgetsByUserIdPromise().then((data) => {
 //   data.forEach((item) => {
 //     item.Date = item.Date.slice(0, 10);
@@ -30,8 +28,11 @@ forms.onsubmit = (e) => {
 // });
 
 getDataByName("budget").then((data) => {
-  data.forEach((item) => {
-    item.Date = item.Date.slice(0, 10);
+  data.forEach((obj) => {
+    obj.Date = obj.Date.slice(0, 10);
+    //delete and edit columns with the important value
+    obj["Delete"] = obj.ID;
+    obj["Edit"] = obj;
   });
-  generateTable(data, "table-div");
+  generateTable(data, "table-div", "budget");
 });

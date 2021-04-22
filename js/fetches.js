@@ -12,3 +12,16 @@ export const getDataByName = (name) => {
 }; 
 
 
+export const deleteByID = (model, id) => {
+
+    fetch("https://localhost:44357/api/" + model + "/" + id +"/", {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+        },
+
+
+    })
+
+}
+
