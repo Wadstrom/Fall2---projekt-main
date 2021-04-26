@@ -12,21 +12,41 @@ const popup = (objValue) => {
   popup.className = "popup popupb";
   overlay.appendChild(popup);
 
-  //creating X button for closeDown popup
+  //Creating X button for closeDown popup
   const close = document.createElement("p");
   close.className = "close";
   const x = document.createTextNode("×");
   close.appendChild(x);
   popup.appendChild(close);
 
-  for (var c = 0; c < objValue.length - 3; c++) {
-    //create inputs in popup
-    const input = document.createElement("input");
-    input.className = "input1";
-    input.value = objValue[c];
-    popup.appendChild(input);
-    console.log(objValue);
-  }
+  //Creating Form
+  const form = document.createElement("form")
+  form.id = "popupForm"
+  popup.appendChild(form)
+
+  console.log(objValue.length);
+  
+ // for (var c = 0; c < objValue.length - 3; c++) {
+   Object.values(objValue).forEach(element => {   
+     //create inputs in popup
+     const input = document.createElement("input");
+     input.className = "input1";
+     input.value = element;
+     form.appendChild(input);
+     
+     console.log(element);
+   });
+//  }
+
+  //Creating SubmitButton 
+  const btn = document.createElement('button')
+  btn.className = "submit-btn"
+  const TextButton = document.createTextNode("Submit")
+  btn.appendChild(TextButton)
+  btn.type = "submit"
+  form.appendChild(btn)
+
+
   //Closing down popup
   close.addEventListener("click", () => {
     console.log("funkar");
@@ -41,6 +61,21 @@ const popup = (objValue) => {
       overlay.remove();
     }
   };
+
+  
+
+  popupForm.onsubmit = (e) => {
+    e.preventDefault();
+    console.log(e.target[0].value);
+    const requestObject = Object.entries(objValue).map((entry) => {
+      const [key, value] = entry
+
+      console.log(`${key}: ${value}`);
+    })
+    console.log(requestObject);
+  }
+
 };
+
 
 export default popup;
