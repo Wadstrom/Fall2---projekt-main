@@ -22,6 +22,10 @@ forms.onsubmit = (e) => {
 };
 
 getDataByName("Friend").then((data) => {
+  data.forEach((obj) => {
+    obj["Accept"] = obj;
+    obj["Decline"] = obj;
+  })
   generateTable(data, "friendtable");
 });
 
