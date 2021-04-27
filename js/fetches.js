@@ -20,17 +20,22 @@ export const deleteByID = (model, id) => {
             "Content-Type": "application/json",
         },
 
-
     })
 
 }
 
 export const setFriendStatus = (relationshipID, wantedstatus  ) => {
-    fetch(`https://localhost:44357/api/Friend/${relationshipID}/${wantedstatus}`, {
-        method: "PUT",
+    fetch(`https://localhost:44357/api/Friend/${relationshipID}`, {
+        method: "POST",
         headers: {
             "Content-Type": "application/json",
-        }
+            
+        },
+        body: JSON.stringify ({
+            Relationship_ID : relationshipID ,
+            Status : wantedstatus 
+        })
+        
     })
     
 };

@@ -66,6 +66,7 @@ const generateTable = (data, tableDiv, model) => {
         row.appendChild(td);
         
       } 
+      //-----FRIEND BUTTONS--------//
       else if (objKey[c] == "Accept") {
         var td = document.createElement("td");
         var pTag = document.createElement("button");
@@ -81,7 +82,7 @@ const generateTable = (data, tableDiv, model) => {
         var td = document.createElement("td");
         var pTag = document.createElement("button");
         //giving value to p-tag so we know what to edit. ObjValue is all values of current row
-        pTag.value = objValue[4];
+        pTag.value = objValue[3];
         var btnName = document.createTextNode("Decline");
         pTag.className = "declineButton";
         pTag.appendChild(btnName);
@@ -121,14 +122,12 @@ const generateTable = (data, tableDiv, model) => {
     }
     //---------Friend---------//
     else if (e.target.className === "acceptButton") {
-      //e.target.value is the value of (editpen) <p> that was defined in the for-loop (58)
       const relId = e.target.value;
-      setFriendStatus(relId , "Accept")
+      setFriendStatus(relId , "Accepted")
     }
     else if (e.target.className === "declineButton") {
-      //e.target.value is the value of (editpen) <p> that was defined in the for-loop (58)
-      const data = e.target.value;
-      
+      const relId = e.target.value;
+      setFriendStatus(relId , "Denied")
     }
   });
 };
