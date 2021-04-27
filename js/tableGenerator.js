@@ -1,4 +1,5 @@
 import { deleteByID } from "./fetches.js";
+import { setFriendStatus } from "./fetches.js";
 import popup from "./popup.js";
 //-----------------------------------------
 const generateTable = (data, tableDiv, model) => {
@@ -69,7 +70,7 @@ const generateTable = (data, tableDiv, model) => {
         var td = document.createElement("td");
         var pTag = document.createElement("button");
         //giving value to p-tag so we know what to edit. ObjValue is all values of current row
-        pTag.value = objValue;
+        pTag.value = objValue[3];
         var btnName = document.createTextNode("Accept");
         pTag.className = "acceptButton";
         pTag.appendChild(btnName);
@@ -80,7 +81,7 @@ const generateTable = (data, tableDiv, model) => {
         var td = document.createElement("td");
         var pTag = document.createElement("button");
         //giving value to p-tag so we know what to edit. ObjValue is all values of current row
-        pTag.value = objValue;
+        pTag.value = objValue[4];
         var btnName = document.createTextNode("Decline");
         pTag.className = "declineButton";
         pTag.appendChild(btnName);
@@ -117,6 +118,17 @@ const generateTable = (data, tableDiv, model) => {
       //e.target.value is the value of (editpen) <p> that was defined in the for-loop (58)
       const data = e.target.value;
       popup(data);
+    }
+    //---------Friend---------//
+    else if (e.target.className === "acceptButton") {
+      //e.target.value is the value of (editpen) <p> that was defined in the for-loop (58)
+      const relId = e.target.value;
+      setFriendStatus(relId , "Accept")
+    }
+    else if (e.target.className === "declineButton") {
+      //e.target.value is the value of (editpen) <p> that was defined in the for-loop (58)
+      const data = e.target.value;
+      
     }
   });
 };

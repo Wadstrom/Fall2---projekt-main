@@ -25,3 +25,14 @@ export const deleteByID = (model, id) => {
 
 }
 
+export const setFriendStatus = (relationshipID, wantedstatus  ) => {
+    fetch(`https://localhost:44357/api/Friend/${relationshipID}/${wantedstatus}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        }
+    })
+    
+};
+
+

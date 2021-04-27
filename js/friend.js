@@ -23,8 +23,8 @@ forms.onsubmit = (e) => {
 
 getDataByName("Friend").then((data) => {
   data.forEach((obj) => {
-    obj["Accept"] = obj;
-    obj["Decline"] = obj;
+    obj["Accept"] = obj.Relationship_ID.value;
+    obj["Decline"] = obj.Relationship_ID;
   })
   generateTable(data, "friendtable");
 });
