@@ -2,6 +2,7 @@ import { deleteByID } from "./fetches.js";
 import popup from "./popup.js";
 //-----------------------------------------
 const generateTable = (data, tableDiv, model) => {
+  if(data[0] ){
   console.log("data: ");
   console.log(data);
   // get the reference for the body
@@ -16,6 +17,9 @@ const generateTable = (data, tableDiv, model) => {
   var objKey = Object.keys(data[0]);
   console.log("objKey: ");
   console.log(objKey);
+  
+  
+
   //copying and adding the first data object to beginning
 
   // ROWS (one row = r) creating a row until data.length is reached
@@ -95,12 +99,17 @@ const generateTable = (data, tableDiv, model) => {
       const data = e.target.value;
 
       const editObject = data.find((obj) => {
-        return obj === obj.ID;
+        return obj = obj.Delete;
       });
-      console.log(editObject);
-      popup(editObject, model);
+      const id = editObject.Delete;
+      console.log(id);
+      popup(editObject, model, id);
     }
   });
+}
+else{
+  console.log("No data found")
+}
 };
 
 export default generateTable;

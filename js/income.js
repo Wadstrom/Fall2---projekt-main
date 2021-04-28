@@ -28,18 +28,8 @@ getDataByName("Income").then((data) => {
     obj.Date = obj.Date.slice(0, 10);
     //delete and edit columns with the important value
     obj["Delete"] = obj.ID;
+    delete obj["ID"];
     obj["Edit"] = obj;
   });
   generateTable(data, "table-div", "Income");
 });
-// const obj = { name: "Emil", lastname: "Neander" };
-
-// const objArray = ["test1", "test2"];
-
-// const test = Object.keys(obj).map((key) => {
-//   const newObj = {[key]: objArray.map((item) => {
-//     return item }
-//   });
-//   return newObj;
-// });
-// console.log(test);

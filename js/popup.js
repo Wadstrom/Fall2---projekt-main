@@ -1,6 +1,6 @@
-import { createEditObj, putByID } from "./fetches.js";
+import { putByID } from "./fetches.js";
 
-const popup = (editObj, model) => {
+const popup = (editObj, model, id) => {
   //Get overlay container
   const overlayContainer = document.getElementById("overlay-container");
   //create overlay
@@ -26,15 +26,18 @@ const popup = (editObj, model) => {
   form.id = "popupForm";
   popup.appendChild(form);
 
-  Object.values(editObj).forEach((element) => {
+  let nr = 2;
+
+if (model === "savinggoal"){
+  nr = 4
+}
+  for(var i = 0; i < Object.values(editObj).length -nr; i++){
     //create inputs in popup
     const input = document.createElement("input");
     input.className = "input1";
-    input.value = element;
+    input.value = Object.values(editObj)[i];
     form.appendChild(input);
-
-    console.log(element);
-  });
+  };
   //  }
 
   //Creating SubmitButton
@@ -53,16 +56,17 @@ const popup = (editObj, model) => {
       overlay.remove();
     }
   });
-
+  
   window.onclick = function (event) {
     if (event.target == overlay) {
       overlay.remove();
     }
   };
-
+  
   popupForm.onsubmit = (e) => {
     e.preventDefault();
-    createEditObj(e, model, editObj.ID);
+    createEditObj(e, model, id);
+    window.location.reload();
   };
 };
 const createEditObj = (e, model, id) => {
@@ -85,6 +89,27 @@ const createEditObj = (e, model, id) => {
       };
       putByID(expenseObject, model, id);
       break;
+
+    case "budget":
+      const budgetObject = {
+        Category: e.target[0].value,
+        Amount: e.target[1].value,
+        Date: e.target[2].value,
+      };
+      putByID(budgetObject, model, id);
+      break;
+
+    case "savinggoal":
+      const savinggoalObject = {
+        Name: e.target[0].value,
+        Amount: e.target[1].value,
+        StartDate: e.target[2].value,
+        ReachDate: e.target[3].value,
+      };
+      putByID(savinggoalObject, model, id);
+      break;
+
+
 
     default:
       break;

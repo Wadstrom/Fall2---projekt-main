@@ -32,6 +32,7 @@ getDataByName("budget").then((data) => {
     obj.Date = obj.Date.slice(0, 10);
     //delete and edit columns with the important value
     obj["Delete"] = obj.ID;
+    delete obj["ID"];
     obj["Edit"] = obj;
   });
   generateTable(data, "table-div", "budget");
