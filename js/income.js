@@ -32,3 +32,14 @@ getDataByName("Income").then((data) => {
   });
   generateTable(data, "table-div", "Income");
 });
+// const obj = { name: "Emil", lastname: "Neander" };
+
+// const objArray = ["test1", "test2"];
+
+// const test = Object.keys(obj).map((key) => {
+//   const newObj = {[key]: objArray.map((item) => {
+//     return item }
+//   });
+//   return newObj;
+// });
+// console.log(test);
