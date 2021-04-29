@@ -31,10 +31,10 @@ export const setFriendStatus = (relationshipID, wantedstatus  ) => {
             "Content-Type": "application/json",
             
         },
-        body: JSON.stringify ({
-            Relationship_ID : relationshipID ,
-            Status : wantedstatus 
-        })
+        body: JSON.stringify (
+          
+            wantedstatus 
+        )
         
     })
     

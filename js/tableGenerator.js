@@ -71,7 +71,7 @@ const generateTable = (data, tableDiv, model) => {
         var td = document.createElement("td");
         var pTag = document.createElement("button");
         //giving value to p-tag so we know what to edit. ObjValue is all values of current row
-        pTag.value = objValue[3];
+        pTag.value = objValue[c];
         var btnName = document.createTextNode("Accept");
         pTag.className = "acceptButton";
         pTag.appendChild(btnName);
@@ -82,7 +82,7 @@ const generateTable = (data, tableDiv, model) => {
         var td = document.createElement("td");
         var pTag = document.createElement("button");
         //giving value to p-tag so we know what to edit. ObjValue is all values of current row
-        pTag.value = objValue[3];
+        pTag.value = objValue[c];
         var btnName = document.createTextNode("Decline");
         pTag.className = "declineButton";
         pTag.appendChild(btnName);
