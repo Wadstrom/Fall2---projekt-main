@@ -28,5 +28,7 @@ export const putByID = (requestObject, model, id) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(requestObject),
+  }).then(() => {
+    window.location.reload()
   }).catch((error) => console.error("Unable to update.", error));
 };

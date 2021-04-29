@@ -33,9 +33,16 @@ if (model === "savinggoal"){
 }
   for(var i = 0; i < Object.values(editObj).length -nr; i++){
     //create inputs in popup
+    const label = document.createElement("label")
+    label.htmlFor = "input" + i
+    label.className = "editLabel"
+    const valueName = document.createTextNode(Object.keys(editObj)[i])
+    label.appendChild(valueName)
+    form.appendChild(label)
     const input = document.createElement("input");
-    input.className = "input1";
+    input.id = "input" + i;
     input.value = Object.values(editObj)[i];
+    input.required = true
     form.appendChild(input);
   };
   //  }
@@ -65,8 +72,8 @@ if (model === "savinggoal"){
   
   popupForm.onsubmit = (e) => {
     e.preventDefault();
-    createEditObj(e, model, id);
-    window.location.reload();
+    createEditObj(e, model, id)
+    
   };
 };
 const createEditObj = (e, model, id) => {

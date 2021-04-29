@@ -5,7 +5,7 @@
     left: 0;
     right: 0;
     background: rgba(125, 146, 197, 0.7);
-    transition: all 400ms ease-in-out;
+    /* transition: all 400ms ease-in-out; */
     visibility: hidden;
     opacity: 1;
   }
@@ -56,4 +56,9 @@
 
   .popup .close:hover {
     color: #7d92c5;
+  }
+
+  .editLabel{
+    color: black;
+    text-shadow: none;
   }
