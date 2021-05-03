@@ -6,19 +6,8 @@ footer{
     display:flex;
     justify-content: space-between;
 }
-#Success{
+#feedback{
     display: flex;
     justify-content: center;
-    visibility: hidden;
-    border-style: dotted;
     color:indianred;
-    border-color: indigo;
 }
-#Failed{
-    display: flex;
-    justify-content: center;
-    visibility: hidden;
-    border-style: dotted;
-    color:indianred;
-    border-color: indigo;
-    }

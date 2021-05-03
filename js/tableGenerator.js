@@ -1,6 +1,7 @@
 import { deleteByID } from "./fetches.js";
 import { setFriendStatus } from "./fetches.js";
 import popup from "./popup.js";
+import { feedbackResponse } from "./workhorse.js";
 //-----------------------------------------
 const generateTable = (data, tableDiv, model) => {
   console.log("data: ");
@@ -124,10 +125,12 @@ const generateTable = (data, tableDiv, model) => {
     else if (e.target.className === "acceptButton") {
       const relId = e.target.value;
       setFriendStatus(relId , "Accepted")
+      window.location.reload()
     }
     else if (e.target.className === "declineButton") {
       const relId = e.target.value;
       setFriendStatus(relId , "Denied")
+        window.location.reload()
     }
   });
 };

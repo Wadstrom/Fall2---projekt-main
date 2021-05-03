@@ -1,13 +1,12 @@
 import generateTable from "./tableGenerator.js";
 import cookieUserID from "./cookiecutter.js"
 import { getDataByName } from "./fetches.js"
-
+import {feedbackResponse} from "./workhorse.js"
 
 forms.onsubmit = (e) => {
   e.preventDefault();
   console.log(e);
-  document.getElementById("Success").style.visibility = "Hidden"
-  document.getElementById("Failed").style.visibility = "Hidden"
+ 
   let requestObject = {
     ID: cookieUserID,
     Email: e.target[0].value
@@ -23,12 +22,8 @@ forms.onsubmit = (e) => {
   .then((response) => response.json())
   .then((response) => {
     console.log(response);
-    if (response.Status != "Failed") {
-      document.getElementById("Success").style.visibility = "Visible"
-    } else {
-      document.getElementById("Failed").style.visibility = "Visible"
-     
-    };
+    feedbackResponse(response, "feedback")
+   
 });
 }
 getDataByName("Friend").then((data) => {
