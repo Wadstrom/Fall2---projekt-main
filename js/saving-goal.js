@@ -1,6 +1,6 @@
 import cookieUserID from "./cookiecutter.js";
 import generateTable from "./tableGenerator.js";
-import { getDataByName } from "./fetches.js";
+import { getDataByName, postByModel } from "./fetches.js";
 
 forms.onsubmit = (e) => {
   e.preventDefault();
@@ -14,13 +14,7 @@ forms.onsubmit = (e) => {
     UserID: cookieUserID,
   };
 
-  fetch("https://localhost:44357/api/SavingGoal", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(requestObject),
-  });
+  postByModel(requestObject, "savinggoal")
 };
 
 getDataByName("savinggoal").then((data) => {

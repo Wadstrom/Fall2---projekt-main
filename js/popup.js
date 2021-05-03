@@ -46,7 +46,7 @@ if (model === "savinggoal"){
       input.id = "input" + i;
       input.value = Object.values(editObj)[i];
       input.required = true
-      if (Object.keys(editObj)[i] === "Date" || Object.keys(editObj)[i] === "StartDate" || Object.keys(editObj)[i] ==="ReachDate" ){
+      if (Object.keys(editObj)[i] === "Date" || Object.keys(editObj)[i] === "Start Date" || Object.keys(editObj)[i] ==="Reach Date" ){
         input.type = "date"
       }else if(Object.keys(editObj)[i] === "Amount") {       
          input.type = "number" 

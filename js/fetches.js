@@ -18,7 +18,9 @@ export const deleteByID = (model, id) => {
     headers: {
       "Content-Type": "application/json",
     },
-  });
+  }).then(() => {
+    window.location.reload()
+  }).catch((error) => console.error("Unable to delete.", error));
 };
 
 export const putByID = (requestObject, model, id) => {
@@ -32,3 +34,15 @@ export const putByID = (requestObject, model, id) => {
     window.location.reload()
   }).catch((error) => console.error("Unable to update.", error));
 };
+
+export const postByModel = (requestObject, model) =>{
+  fetch("https://localhost:44357/api/" + model, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(requestObject),
+  }).then(() => {
+    window.location.reload()
+  }).catch((error) => console.error("Unable to post.", error));
+}
