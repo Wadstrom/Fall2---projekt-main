@@ -5,6 +5,7 @@ import { feedbackResponse } from "./workhorse.js";
 
 //-----------------------------------------
 const generateTable = (data, tableDiv, model) => {
+  if(data[0] ){
   console.log("data: ");
   console.log(data);
   // get the reference for the body
@@ -19,6 +20,9 @@ const generateTable = (data, tableDiv, model) => {
   var objKey = Object.keys(data[0]);
   console.log("objKey: ");
   console.log(objKey);
+  
+  
+
   //copying and adding the first data object to beginning
 
   // ROWS (one row = r) creating a row until data.length is reached
@@ -109,18 +113,25 @@ const generateTable = (data, tableDiv, model) => {
 
   //event listener for delete and edit
   //tbl?---
-  document.addEventListener("click", (e) => {
+  tbl.addEventListener("click", (e) => {
     //classList istället---
     if (e.target.className === "deleteButton") {
       //e.target.value is the value of (trashcan) <p> that was defined in the for-loop (46)
       const id = e.target.value;
       deleteByID(model, id);
+      
 
-      e.target.parentNode.parentNode.remove();
+     
     } else if (e.target.className === "editButton") {
       //e.target.value is the value of (editpen) <p> that was defined in the for-loop (58)
       const data = e.target.value;
-      popup(data);
+
+      const editObject = data.find((obj) => {
+        return obj = obj.Delete;
+      });
+      const id = editObject.Delete;
+      console.log(id);
+      popup(editObject, model, id);
     }
     //---------Friend---------//
     else if (e.target.className === "acceptButton") {
@@ -145,6 +156,10 @@ const generateTable = (data, tableDiv, model) => {
       
     }
   });
+}
+else{
+  console.log("No data found")
+}
 };
 
 export default generateTable;

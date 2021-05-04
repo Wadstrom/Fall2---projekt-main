@@ -1,6 +1,6 @@
 import cookieUserID from "./cookiecutter.js";
 import generateTable from "./tableGenerator.js";
-import { getDataByName } from "./fetches.js";
+import { getDataByName, postByModel } from "./fetches.js";
 
 forms.onsubmit = (e) => {
   e.preventDefault();
@@ -11,13 +11,7 @@ forms.onsubmit = (e) => {
     Date: e.target[2].value,
   };
 
-  fetch("https://localhost:44357/api/budget", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(requestObject),
-  });
+  postByModel(requestObject, "budget")
 };
 
 // GetBudgetsByUserIdPromise().then((data) => {
@@ -32,6 +26,7 @@ getDataByName("budget").then((data) => {
     obj.Date = obj.Date.slice(0, 10);
     //delete and edit columns with the important value
     obj["Delete"] = obj.ID;
+    delete obj["ID"];
     obj["Edit"] = obj;
   });
   generateTable(data, "table-div", "budget");
