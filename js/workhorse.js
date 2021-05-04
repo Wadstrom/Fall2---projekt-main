@@ -90,9 +90,10 @@ export const calculateBudgets = (arr, earr) => {
 // 2. Vart den ska skriva ut. 
 
 export const feedbackResponse = (response, whereID) => {
- if (response.Status != "Success"){
+ if (response.Status == "Success"){
      document.getElementById(whereID).innerHTML = response.Message
- }else{
-    document.getElementById(whereID).innerHTML = response.Message
- }
-}
+ }else if (response.status == "200"){
+    document.getElementById(whereID).innerHTML = "Success"
+} else { 
+document.getElementById(whereID).innerHTML = response.Message
+}}
