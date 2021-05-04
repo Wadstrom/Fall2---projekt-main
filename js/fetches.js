@@ -23,17 +23,6 @@ export const deleteByID = (model, id) => {
   }).catch((error) => console.error("Unable to delete.", error));
 };
 
-
-    fetch("https://localhost:44357/api/" + model + "/" + id +"/", {
-        method: "DELETE",
-        headers: {
-            "Content-Type": "application/json",
-        },
-
-    })
-
-
-
 export const setFriendStatus = (relationshipID, wantedstatus  ) => {
   return  fetch(`https://localhost:44357/api/Friend/${relationshipID}`, {
         method: "PUT",
