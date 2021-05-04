@@ -1,5 +1,8 @@
 import { deleteByID } from "./fetches.js";
+import { setFriendStatus, getDataByName } from "./fetches.js";
 import popup from "./popup.js";
+import { feedbackResponse } from "./workhorse.js";
+
 //-----------------------------------------
 const generateTable = (data, tableDiv, model) => {
   if(data[0] ){
@@ -67,6 +70,30 @@ const generateTable = (data, tableDiv, model) => {
         pTag.appendChild(btnName);
         td.appendChild(pTag);
         row.appendChild(td);
+        
+      } 
+      //-----FRIEND BUTTONS--------//
+      else if (objKey[c] == "Accept") {
+        var td = document.createElement("td");
+        var pTag = document.createElement("button");
+        //giving value to p-tag so we know what to edit. ObjValue is all values of current row
+        pTag.value = objValue[c];
+        var btnName = document.createTextNode("Accept");
+        pTag.className = "acceptButton";
+        pTag.appendChild(btnName);
+        td.appendChild(pTag);
+        row.appendChild(td);
+      } 
+      else if (objKey[c] == "Decline") {
+        var td = document.createElement("td");
+        var pTag = document.createElement("button");
+        //giving value to p-tag so we know what to edit. ObjValue is all values of current row
+        pTag.value = objValue[c];
+        var btnName = document.createTextNode("Decline");
+        pTag.className = "declineButton";
+        pTag.appendChild(btnName);
+        td.appendChild(pTag);
+        row.appendChild(td);
       } else {
         var td = document.createElement("td");
         var cellText = document.createTextNode(objValue[c]);
@@ -105,6 +132,28 @@ const generateTable = (data, tableDiv, model) => {
       const id = editObject.Delete;
       console.log(id);
       popup(editObject, model, id);
+    }
+    //---------Friend---------//
+    else if (e.target.className === "acceptButton") {
+      const relId = e.target.value;
+      setFriendStatus(relId , "Accepted")
+      .then((response)=> {
+        feedbackResponse(response, "feedback")})
+      .then(() => {getDataByName("Friend")}).then((data) => {
+        generateTable(data, "friendtable");
+        })
+    }
+    else if (e.target.className === "declineButton") {
+      const relId = e.target.value;
+      setFriendStatus(relId , "Denied")
+      .then((response)=> {
+        feedbackResponse(response, "feedback")})
+        .then(() => {
+          getDataByName("Friend")})
+          .then((data) => {
+            generateTable(data, "friendtable");
+            })
+      
     }
   });
 }

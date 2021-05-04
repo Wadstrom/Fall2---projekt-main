@@ -5,11 +5,11 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/css/site-skeleton.css">
-  <link rel="stylesheet" href="/css/forms.css">
-  <link rel="stylesheet" href="/css/table.css" />
-  <link rel="stylesheet" href="/css/social.css">
-  <link rel="stylesheet" href="css/popup.css">
+  <link rel="stylesheet" href="./css/site-skeleton.css">
+  <link rel="stylesheet" href="./css/forms.css">
+  <link rel="stylesheet" href="./css/table.css" />
+  <link rel="stylesheet" href="./css/social.css">
+  <link rel="stylesheet" href="./css/popup.css">
   <title>DinBudget</title>
 </head>
 
@@ -21,14 +21,14 @@
     </div>
     <div class="sidebar">
       <ul class="sidebarList">
-        <li class="homepage" onclick="location.href='/homepage.html'">Homepage</li>
-        <li class="income" onclick="location.href='/income.html'">Income</li>
-        <li class="expense" onclick="location.href='/expense.html'">Expense</li>
-        <li class="monthly-budget" onclick="location.href = '/monthly-budget.html'">Monthly Budget</li>
-        <li class="saving-goal" onclick="location.href= '/saving-goal.html'">Saving Goal</li>
-        <li class="social" onclick="location.href= '/social.html'">Social</li>
+        <li class="homepage" onclick="location.href='./homepage.html'">Homepage</li>
+        <li class="income" onclick="location.href='./income.html'">Income</li>
+        <li class="expense" onclick="location.href='./expense.html'">Expense</li>
+        <li class="monthly-budget" onclick="location.href = './monthly-budget.html'">Monthly Budget</li>
+        <li class="saving-goal" onclick="location.href= './saving-goal.html'">Saving Goal</li>
+        <li class="social" onclick="location.href= './social.html'">Social</li>
         <li class="subscribe">Subscription</li>
-        <li class="sign-out" onclick="location.href= '/index.html'">Sign out</li>
+        <li class="sign-out" onclick="location.href= './index.html'">Sign out</li>
       </ul>
     </div>
     <div class="maincontent">
@@ -38,6 +38,8 @@
           <input type="email" /></label>
           <button type="submit">Send</button>
         </form>
+        <p id="feedback"></p>
+        
         <div> 
         <table id="friendtable"></table>
         </div>
@@ -52,9 +54,7 @@
           <h1>About us</h1>
           <a class="close" href="#">&times;</a>
           <div class="content">
-            <p>His palms are sweaty, knees weak, arms are heavy
-              There's vomit on his sweater already, mom's spaghetti.
-            </p> 
+            <p>Vi är sex studerande som har detta som ett pågående projectarbete.</p> 
           </div>
         </div>
       </div>

@@ -6,3 +6,8 @@ footer{
     display:flex;
     justify-content: space-between;
 }
+#feedback{
+    display: flex;
+    justify-content: center;
+    color:indianred;
+}
