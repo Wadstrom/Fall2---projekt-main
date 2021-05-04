@@ -32,7 +32,7 @@ export const deleteByID = (model, id) => {
 
     })
 
-}
+
 
 export const setFriendStatus = (relationshipID, wantedstatus  ) => {
   return  fetch(`https://localhost:44357/api/Friend/${relationshipID}`, {
