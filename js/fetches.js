@@ -1,7 +1,9 @@
 import cookieUserID from "./cookiecutter.js";
+import { dotAnimation } from "./animations.js";
 //---------------------Collection of "fetch" functions----------------------
 
 export const getDataByName = (name) => {
+  dotAnimation.show()
   return fetch(`https://localhost:44357/api/${name}/${cookieUserID}`)
     .then((response) => {
       return response.json();
@@ -9,10 +11,16 @@ export const getDataByName = (name) => {
     .then((data) => {
       return data;
     })
-    .catch((error) => console.error("Unable to retrieve data", error));
+    .catch(() => {
+      dotAnimation.errorMessage("Unable to retrieve data")
+    })
+    .finally(() => {
+      dotAnimation.hide()
+    })
 };
 
 export const deleteByID = (model, id) => {
+  dotAnimation.show()
   fetch("https://localhost:44357/api/" + model + "/" + id + "/", {
     method: "DELETE",
     headers: {
@@ -20,7 +28,10 @@ export const deleteByID = (model, id) => {
     },
   }).then(() => {
     window.location.reload()
-  }).catch((error) => console.error("Unable to delete.", error));
+  }).catch(() => { dotAnimation.errorMessage("Unable to delete")})
+    .finally(() => {
+      dotAnimation.hide()
+    })
 };
 
 export const setFriendStatus = (relationshipID, wantedstatus  ) => {
@@ -49,6 +60,7 @@ export const putByID = (requestObject, model, id) => {
 };
 
 export const postByModel = (requestObject, model) =>{
+  dotAnimation.show()
   fetch("https://localhost:44357/api/" + model, {
     method: "POST",
     headers: {
@@ -57,5 +69,9 @@ export const postByModel = (requestObject, model) =>{
     body: JSON.stringify(requestObject),
   }).then(() => {
     window.location.reload()
-  }).catch((error) => console.error("Unable to post.", error));
+  }).catch(() => { 
+    dotAnimation.errorMessage("Unable to add") })
+    .finally(() => {
+      dotAnimation.hide()
+    })
 }
