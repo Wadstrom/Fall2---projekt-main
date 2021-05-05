@@ -64,7 +64,7 @@ const generateTable = (data, tableDiv, model) => {
         var td = document.createElement("td");
         var pTag = document.createElement("p");
         //giving value to p-tag so we know what to edit. ObjValue is all values of current row
-        pTag.value = objValue;
+        pTag.value = objValue[c];
         var btnName = document.createTextNode("✎");
         pTag.className = "editButton";
         pTag.appendChild(btnName);
@@ -125,13 +125,9 @@ const generateTable = (data, tableDiv, model) => {
     } else if (e.target.className === "editButton") {
       //e.target.value is the value of (editpen) <p> that was defined in the for-loop (58)
       const data = e.target.value;
+      const id = data.Delete;
+      popup(data, model, id);
 
-      const editObject = data.find((obj) => {
-        return obj = obj.Delete;
-      });
-      const id = editObject.Delete;
-      console.log(id);
-      popup(editObject, model, id);
     }
     //---------Friend---------//
     else if (e.target.className === "acceptButton") {
