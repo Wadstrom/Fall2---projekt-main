@@ -30,6 +30,7 @@ getDataByName("Friend").then((data) => {
   data.forEach((obj) => {
     obj["Accept"] = obj.Relationship_ID;
     obj["Decline"] = obj.Relationship_ID;
+    delete obj.Relationship_ID
   })
   generateTable(data, "friendtable");
 });
