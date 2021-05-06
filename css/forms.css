@@ -10,6 +10,8 @@
 }
 
 #forms {
+  
+  position: relative;
   border-radius: 15px;
   height: 100%;
   width: 50%;
@@ -18,8 +20,9 @@
   margin-top: 10px;
   margin-bottom: 10px;
   padding-top: 15px;
-  padding-bottom: 15px;
+  padding-bottom: 35px;
   background-color: #1b3c7775;
+  
 }
 
 #forms > div {
@@ -54,3 +57,5 @@ label {
   font-weight: bolder;
   text-shadow: 1px 1px black;
 }
+
+
