@@ -27,10 +27,30 @@ forms.onsubmit = (e) => {
 });
 }
 getDataByName("Friend").then((data) => {
-  data.forEach((obj) => {
-    obj["Accept"] = obj.Relationship_ID;
-    obj["Decline"] = obj.Relationship_ID;
-    delete obj.Relationship_ID
-  })
-  generateTable(data, "friendtable");
+  friendListSorter(data)
 });
+
+function friendListSorter (list) {
+  let sent = []
+  let received = []
+  let friends = []
+  list.forEach((obj) => {
+    if (obj.List_ID === 1){
+      obj["Accept"] = obj.Relationship_ID;
+      obj["Decline"] = obj.Relationship_ID;
+      delete obj.Relationship_ID
+      sent.push(obj)
+    } else if (obj.List_ID === 2){
+      obj["Delete"] = obj.Relationship_ID;
+      delete obj.Relationship_ID
+      received.push(obj)
+    } else {
+      obj["Delete"] = obj.Relationship_ID;
+      delete obj.Relationship_ID
+      friends.push(obj)
+    }
+  })
+  generateTable(sent, "sent")
+  generateTable(received, "received", "Friend")
+  generateTable(friends, "friends", "Friend")
+}

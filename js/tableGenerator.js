@@ -119,15 +119,13 @@ const generateTable = (data, tableDiv, model) => {
       //e.target.value is the value of (trashcan) <p> that was defined in the for-loop (46)
       const id = e.target.value;
       deleteByID(model, id);
-      
-
-     
+  
     } else if (e.target.className === "editButton") {
       //e.target.value is the value of (editpen) <p> that was defined in the for-loop (58)
       const data = e.target.value;
       const id = data.Delete;
       popup(data, model, id);
-
+      
     }
     //---------Friend---------//
     else if (e.target.className === "acceptButton") {
