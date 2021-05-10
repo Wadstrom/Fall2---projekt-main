@@ -38,15 +38,18 @@ function friendListSorter (list) {
     if (obj.List_ID === 1){
       obj["Accept"] = obj.Relationship_ID;
       obj["Decline"] = obj.Relationship_ID;
+      delete obj.List_ID
       delete obj.Relationship_ID
       sent.push(obj)
     } else if (obj.List_ID === 2){
       obj["Delete"] = obj.Relationship_ID;
       delete obj.Relationship_ID
+      delete obj.List_ID
       received.push(obj)
-    } else {
+    } else if (obj.List_ID === 3){
       obj["Delete"] = obj.Relationship_ID;
       delete obj.Relationship_ID
+      delete obj.List_ID
       friends.push(obj)
     }
   })
