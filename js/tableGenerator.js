@@ -125,10 +125,11 @@ const generateTable = (data, tableDiv, model) => {
     } else if (e.target.className === "editButton") {
       //e.target.value is the value of (editpen) <p> that was defined in the for-loop (58)
       const data = e.target.value;
-
+      console.log(data);
       const editObject = data.find((obj) => {
         return obj = obj.Delete;
       });
+      console.log(editObject);
       const id = editObject.Delete;
       console.log(id);
       popup(editObject, model, id);
