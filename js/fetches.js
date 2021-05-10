@@ -3,6 +3,7 @@ import { dotAnimation } from "./animations.js";
 //---------------------Collection of "fetch" functions----------------------
 
 export const getDataByName = (name) => {
+
   dotAnimation.show()
   return fetch(`https://localhost:44357/api/${name}/${cookieUserID}`)
     .then((response) => {
@@ -12,7 +13,7 @@ export const getDataByName = (name) => {
       return data;
     })
     .catch(() => {
-      dotAnimation.errorMessage("Unable to retrieve data")
+       dotAnimation.errorMessage("Unable to retrieve data")
     })
     .finally(() => {
       dotAnimation.hide()
@@ -28,7 +29,9 @@ export const deleteByID = (model, id) => {
     },
   }).then(() => {
     window.location.reload()
-  }).catch(() => { dotAnimation.errorMessage("Unable to delete")})
+  }).catch(() => { 
+     dotAnimation.errorMessage("Unable to delete")
+  })
     .finally(() => {
       dotAnimation.hide()
     })
@@ -48,6 +51,8 @@ export const setFriendStatus = (relationshipID, wantedstatus  ) => {
 };
 
 export const putByID = (requestObject, model, id) => {
+  dotAnimation.deleteMessage()
+  dotAnimation.show()
   fetch("https://localhost:44357/api/" + model + "/" + id + "/", {
     method: "PUT",
     headers: {
@@ -56,10 +61,15 @@ export const putByID = (requestObject, model, id) => {
     body: JSON.stringify(requestObject),
   }).then(() => {
     window.location.reload()
-  }).catch((error) => console.error("Unable to update.", error));
+  }).catch(() => { 
+    dotAnimation.errorMessage("Unable to edit")
+   }).finally(() => {
+     dotAnimation.hide()
+   })
 };
 
 export const postByModel = (requestObject, model) =>{
+  dotAnimation.deleteMessage()
   dotAnimation.show()
   fetch("https://localhost:44357/api/" + model, {
     method: "POST",
@@ -70,7 +80,8 @@ export const postByModel = (requestObject, model) =>{
   }).then(() => {
     window.location.reload()
   }).catch(() => { 
-    dotAnimation.errorMessage("Unable to add") })
+     dotAnimation.errorMessage("Unable to add") 
+  })
     .finally(() => {
       dotAnimation.hide()
     })

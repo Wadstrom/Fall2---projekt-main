@@ -26,6 +26,11 @@ const popup = (editObj, model, id) => {
   form.id = "popupForm";
   popup.appendChild(form);
 
+  //Create Animation div
+  const animationDiv = document.createElement("div")
+  animationDiv.id = "animation-wrapper"
+  popupForm.appendChild(animationDiv)
+
   let nr = 2;
 
 if (model === "savinggoal"){
